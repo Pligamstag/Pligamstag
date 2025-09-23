@@ -708,19 +708,19 @@
                 
                 <div class="stats">
                     <div class="stat-item">
-                        <div class="stat-number">4+</div>
+                        <div class="stat-number" data-target="4">0+</div>
                         <div class="stat-label">Années d'expérience</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">30K+</div>
+                        <div class="stat-number" data-target="2">0K+</div>
                         <div class="stat-label">Followers total</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">500+</div>
+                        <div class="stat-number" data-target="150">0+</div>
                         <div class="stat-label">Vidéos créées</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">100+</div>
+                        <div class="stat-number" data-target="20">0+</div>
                         <div class="stat-label">Streams réalisés</div>
                     </div>
                 </div>
@@ -893,22 +893,27 @@
             }, 1000);
         });
 
-        // Compteurs animés pour les statistiques
+        // Compteurs animés pour les statistiques - CORRIGÉ
         function animateCounters() {
             const counters = document.querySelectorAll('.stat-number');
             const speed = 200;
             
             counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-target')) || 0;
-                const count = +counter.innerText.replace('+', '');
+                const target = parseInt(counter.getAttribute('data-target'));
+                let count = 0;
                 const increment = target / speed;
                 
-                if (count < target) {
-                    counter.innerText = '+' + Math.ceil(count + increment);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = '+' + target;
-                }
+                const updateCounter = () => {
+                    if (count < target) {
+                        count += increment;
+                        counter.innerText = Math.ceil(count) + (counter.innerText.includes('K') ? 'K+' : '+');
+                        setTimeout(updateCounter, 10);
+                    } else {
+                        counter.innerText = target + (counter.innerText.includes('K') ? 'K+' : '+');
+                    }
+                };
+                
+                updateCounter();
             });
         }
 
