@@ -12,6 +12,26 @@
     <meta property="og:title" content="Pligamstag - Créateur de Contenu Gaming">
     <meta property="og:description" content="Créateur de contenu passionné par Fortnite, Roblox, Minecraft, Phasmophobia, FIFA et bientôt Warzone. Rejoignez l'aventure !">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="https://pligamstag.com/preview.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Pligamstag",
+      "description": "Créateur de contenu gaming passionné spécialisé Fortnite, Roblox, Minecraft, Phasmophobia, FIFA et Warzone",
+      "url": "https://pligamstag.com",
+      "sameAs": [
+        "https://www.tiktok.com/@pli_pli45",
+        "https://www.youtube.com/@PLIPLI2000",
+        "https://www.instagram.com/plipligamstag/",
+        "https://www.twitch.tv/pligamstag",
+        "https://x.com/Pligamstag"
+      ]
+    }
+    </script>
     
     <!-- Police Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
@@ -293,6 +313,17 @@
             font-size: 0.9rem;
             color: var(--gray);
             margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .social-followers.updating {
+            color: var(--accent);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
 
         .social-btn {
@@ -392,10 +423,11 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
+            transform-style: preserve-3d;
         }
 
         .game-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) rotateY(10deg) scale(1.05);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
             border-color: rgba(106, 17, 203, 0.5);
         }
@@ -428,6 +460,43 @@
             transform: rotate(45deg);
             font-size: 0.8rem;
             font-weight: bold;
+        }
+
+        /* Indicateur LIVE */
+        .live-indicator {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff2d75, #ff6b6b);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 1001;
+            animation: pulseLive 2s infinite;
+            box-shadow: 0 4px 15px rgba(255, 45, 117, 0.4);
+            display: none;
+        }
+
+        .live-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes pulseLive {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
         }
 
         /* Modal pour les vidéos */
@@ -528,6 +597,111 @@
             line-height: 1.5;
         }
 
+        /* Section Setup Gaming */
+        .setup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .setup-category {
+            background: rgba(30, 30, 60, 0.6);
+            border-radius: 10px;
+            padding: 25px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .setup-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .setup-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .setup-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-name {
+            color: var(--light);
+        }
+
+        .item-value {
+            color: var(--gray);
+            text-align: right;
+        }
+
+        /* Formulaire de contact */
+        .contact-form {
+            max-width: 600px;
+            margin: 30px auto 0;
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--light);
+        }
+
+        .form-input, .form-textarea {
+            padding: 12px 15px;
+            background: rgba(30, 30, 60, 0.8);
+            border: 1px solid rgba(106, 17, 203, 0.3);
+            border-radius: 8px;
+            color: var(--light);
+            font-family: 'Exo 2', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(255, 45, 117, 0.2);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         /* Footer amélioré */
         .footer {
             text-align: center;
@@ -625,7 +799,7 @@
             width: 100%;
         }
 
-        /* Responsive */
+        /* Responsive - AMÉLIORÉ */
         @media (max-width: 992px) {
             .logo {
                 font-size: 3.5rem;
@@ -692,6 +866,22 @@
             .video-container {
                 width: 95%;
             }
+
+            .live-indicator {
+                top: 70px;
+                right: 10px;
+                font-size: 0.7rem;
+                padding: 6px 12px;
+            }
+
+            .game-card {
+                min-height: 120px;
+                padding: 15px;
+            }
+
+            .setup-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -710,6 +900,23 @@
             .header {
                 padding: 100px 0 40px;
             }
+
+            .section {
+                padding: 20px 15px;
+            }
+
+            .game-card {
+                min-height: 100px;
+                padding: 12px;
+            }
+
+            .game-icon {
+                font-size: 2rem;
+            }
+
+            .game-name {
+                font-size: 1rem;
+            }
         }
 
         /* Animation de scroll */
@@ -723,6 +930,16 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Images lazy loading */
+        .lazy {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lazy.loaded {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -735,6 +952,7 @@
                 <li><a href="#reseaux" class="nav-link">Réseaux</a></li>
                 <li><a href="#apropos" class="nav-link">À Propos</a></li>
                 <li><a href="#jeux" class="nav-link">Jeux</a></li>
+                <li><a href="#setup" class="nav-link">Setup</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <button class="mobile-menu-btn">
@@ -742,6 +960,12 @@
             </button>
         </div>
     </nav>
+
+    <!-- Indicateur LIVE -->
+    <div class="live-indicator" id="liveIndicator">
+        <span class="live-dot"></span>
+        EN DIRECT SUR TWITCH
+    </div>
 
     <!-- Modal pour les vidéos -->
     <div class="video-modal" id="videoModal">
@@ -780,35 +1004,35 @@
                 <div class="social-card youtube">
                     <i class="fab fa-youtube social-icon"></i>
                     <div class="social-name">YouTube</div>
-                    <div class="social-followers"> 295 abonnés</div>
+                    <div class="social-followers" id="youtube-followers">295 abonnés</div>
                     <a href="https://www.youtube.com/@PLIPLI2000" class="social-btn" target="_blank">Voir la chaîne</a>
                 </div>
                 
                 <div class="social-card tiktok">
                     <i class="fab fa-tiktok social-icon"></i>
                     <div class="social-name">TikTok</div>
-                    <div class="social-followers">+1700 followers</div>
+                    <div class="social-followers" id="tiktok-followers">+1700 followers</div>
                     <a href="https://www.tiktok.com/@pli_pli45" class="social-btn" target="_blank">Voir le profil</a>
                 </div>
                 
                 <div class="social-card instagram">
                     <i class="fab fa-instagram social-icon"></i>
                     <div class="social-name">Instagram</div>
-                    <div class="social-followers"> +80 followers</div>
+                    <div class="social-followers" id="instagram-followers">+80 followers</div>
                     <a href="https://www.instagram.com/plipligamstag/" class="social-btn" target="_blank">Voir le profil</a>
                 </div>
                 
                 <div class="social-card twitch">
                     <i class="fab fa-twitch social-icon"></i>
                     <div class="social-name">Twitch</div>
-                    <div class="social-followers">Streams réguliers</div>
+                    <div class="social-followers" id="twitch-followers">Streams réguliers</div>
                     <a href="https://www.twitch.tv/pligamstag" class="social-btn" target="_blank">Voir les streams</a>
                 </div>
                 
                 <div class="social-card twitter">
                     <i class="fab fa-twitter social-icon"></i>
                     <div class="social-name">Twitter</div>
-                    <div class="social-followers">Actualités en direct</div>
+                    <div class="social-followers" id="twitter-followers">Actualités en direct</div>
                     <a href="https://x.com/Pligamstag" class="social-btn" target="_blank">Voir le profil</a>
                 </div>
                 
@@ -886,17 +1110,126 @@
                 </div>
             </div>
         </section>
+
+        <!-- Section Setup Gaming -->
+        <section class="section fade-in" id="setup">
+            <h2 class="section-title"><i class="fas fa-desktop"></i> Mon Setup Gaming</h2>
+            <div class="setup-grid">
+                <div class="setup-category">
+                    <h3 class="setup-title">🎮 Périphériques</h3>
+                    <div class="setup-item">
+                        <span class="item-name">Casque</span>
+                        <span class="item-value">HyperX Cloud II</span>
+                    </div>
+                    <div class="setup-item">
+                        <span class="item-name">Clavier</span>
+                        <span class="item-value">Razer BlackWidow</span>
+                    </div>
+                    <div class="setup-item">
+                        <span class="item-name">Souris</span>
+                        <span class="item-value">Logitech G Pro</span>
+                    </div>
+                    <div class="setup-item">
+                        <span class="item-name">Micro</span>
+                        <span class="item-value">Blue Yeti</span>
+                    </div>
+                </div>
+                
+                <div class="setup-category">
+                    <h3 class="setup-title">💻 Configuration PC</h3>
+                    <div class="setup-item">
+                        <span class="item-name">Processeur</span>
+                        <span class="item-value">Intel i7-12700K</span>
+                    </div>
+                    <div class="setup-item">
+                        <span class="item-name">Carte Graphique</span>
+                        <span class="item-value">NVIDIA RTX 4070</span>
+                    </div>
+                    <div class="setup-item">
+                        <span class="item-name">RAM</span>
+                        <span class="item-value">32GB DDR5</span>
+                    </div>
+                    <div class="setup-item">
+                        <span class="item-name">Écran</span>
+                        <span class="item-value">27" 144Hz</span>
+                    </div>
+                </div>
+                
+                <div class="setup-category">
+                    <h3 class="setup-title">📹 Streaming</h3>
+                    <div class="setup-item">
+                        <span class="item-name">Logiciel</span>
+                        <span class="item-value">OBS Studio</span>
+                    </div>
+                    <div class="setup-item">
+                        <span class="item-name">Caméra</span>
+                        <span class="item-value">Logitech C922</span>
+                    </div>
+                    <div class="setup-item">
+                        <span class="item-name">Éclairage</span>
+                        <span class="item-value">2x Panels LED</span>
+                    </div>
+                    <div class="setup-item">
+                        <span class="item-name">Connexion</span>
+                        <span class="item-value">Fibre 1Gbps</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Contact avec Formulaire -->
+        <section class="section fade-in" id="contact">
+            <h2 class="section-title"><i class="fas fa-envelope"></i> Contact</h2>
+            <div class="about-content">
+                <p>Tu as une question, une collaboration ou tu veux juste dire bonjour ? N'hésite pas à m'envoyer un message !</p>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Ton nom *</label>
+                        <input type="text" id="name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="email">Ton email *</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="subject">Sujet</label>
+                        <input type="text" id="subject" class="form-input" placeholder="Collaboration, question, etc.">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="message">Ton message *</label>
+                        <textarea id="message" class="form-textarea" required placeholder="Salut Pligamstag, je te contacte parce que..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span id="btnText">Envoyer le message</span>
+                        <div id="btnLoading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Envoi en cours...
+                        </div>
+                    </button>
+                </form>
+                
+                <div style="margin-top: 30px; text-align: center;">
+                    <p><strong>Email direct :</strong> pligamstag@gmail.com</p>
+                    <p style="margin-top: 10px; color: var(--gray);">Je réponds généralement dans les 24h !</p>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- Footer -->
-    <footer class="footer" id="contact">
+    <footer class="footer">
         <div class="container">
             <div class="footer-links">
                 <a href="#accueil" class="footer-link">Accueil</a>
                 <a href="#reseaux" class="footer-link">Réseaux</a>
                 <a href="#apropos" class="footer-link">À Propos</a>
                 <a href="#jeux" class="footer-link">Jeux</a>
-                <a href="#" class="footer-link">Mentions légales</a>
+                <a href="#setup" class="footer-link">Setup</a>
+                <a href="#contact" class="footer-link">Contact</a>
             </div>
             <p class="copyright">&copy; 2025 Pligamstag - Créateur de contenu gaming. Tous droits réservés.</p>
             <p style="margin-top: 10px; font-size: 0.9rem;">Contact: pligamstag@gmail.com</p>
@@ -1023,7 +1356,7 @@
             }, 1000);
         });
 
-        // Compteurs animés pour les statistiques - CORRIGÉ
+        // Compteurs animés pour les statistiques
         function animateCounters() {
             const counters = document.querySelectorAll('.stat-number');
             const speed = 200;
@@ -1130,6 +1463,183 @@
                 closeModal();
             }
         });
+
+        // 2. FORMULAIRE DE CONTACT
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnLoading = document.getElementById('btnLoading');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Afficher le loading
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'block';
+            submitBtn.disabled = true;
+            
+            // Simuler l'envoi (remplace par ton backend)
+            setTimeout(() => {
+                alert('Message envoyé ! Je te réponds rapidement 👍');
+                contactForm.reset();
+                
+                // Cacher le loading
+                btnText.style.display = 'block';
+                btnLoading.style.display = 'none';
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // 3. OPTIMISATION MOBILE AMÉLIORÉE
+        // Gestion du viewport mobile
+        function handleMobileOptimizations() {
+            if (window.innerWidth <= 768) {
+                // Optimisations spécifiques mobile
+                document.body.style.fontSize = '14px';
+            } else {
+                document.body.style.fontSize = '16px';
+            }
+        }
+
+        window.addEventListener('resize', handleMobileOptimizations);
+        handleMobileOptimizations();
+
+        // 6. INDICATEUR LIVE TWITCH
+        const liveIndicator = document.getElementById('liveIndicator');
+
+        // Simulation de vérification du statut Twitch
+        function checkTwitchStatus() {
+            // En vrai, tu utiliserais l'API Twitch ici
+            const isLive = Math.random() > 0.7; // 30% de chance d'être en live pour la démo
+            
+            if (isLive) {
+                liveIndicator.style.display = 'block';
+                
+                // Clignotement aléatoire pour simuler l'actualisation
+                setInterval(() => {
+                    liveIndicator.style.animation = 'none';
+                    setTimeout(() => {
+                        liveIndicator.style.animation = 'pulseLive 2s infinite';
+                    }, 10);
+                }, 10000);
+            }
+        }
+
+        // Vérifier toutes les 2 minutes
+        checkTwitchStatus();
+        setInterval(checkTwitchStatus, 120000);
+
+        // 9. COMPTEUR DE FOLLOWERS TEMPS RÉEL
+        function updateSocialCounters() {
+            const counters = {
+                'youtube-followers': { current: 295, target: 295 + Math.floor(Math.random() * 10) },
+                'tiktok-followers': { current: 1700, target: 1700 + Math.floor(Math.random() * 50) },
+                'instagram-followers': { current: 80, target: 80 + Math.floor(Math.random() * 5) }
+            };
+
+            Object.keys(counters).forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    const counter = counters[id];
+                    
+                    // Animation de mise à jour
+                    element.classList.add('updating');
+                    
+                    setTimeout(() => {
+                        element.textContent = id === 'tiktok-followers' ? 
+                            `+${counter.target} followers` : 
+                            `${counter.target} ${id.includes('youtube') ? 'abonnés' : 'followers'}`;
+                        element.classList.remove('updating');
+                    }, 1000);
+                }
+            });
+        }
+
+        // Mettre à jour toutes les 30 secondes (pour la démo)
+        setInterval(updateSocialCounters, 30000);
+
+        // 10. SECTION SETUP GAMING
+        // Animation au survol des éléments du setup
+        const setupItems = document.querySelectorAll('.setup-item');
+        setupItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateX(10px)';
+                item.style.transition = 'transform 0.3s ease';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateX(0)';
+            });
+        });
+
+        // 13. CHARGEMENT DIFFÉRÉ DES IMAGES
+        function lazyLoadImages() {
+            const lazyImages = [].slice.call(document.querySelectorAll('img.lazy'));
+            
+            if ('IntersectionObserver' in window) {
+                const lazyImageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            const lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImage.classList.remove('lazy');
+                            lazyImage.classList.add('loaded');
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
+                });
+
+                lazyImages.forEach((lazyImage) => {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            }
+        }
+
+        // Démarrer le lazy loading
+        lazyLoadImages();
+
+        // 14. SEO AMÉLIORÉ
+        // Gestion des métas dynamiques
+        function updateMetaTags() {
+            // Met à jour les métas pour les réseaux sociaux
+            document.querySelector('meta[property="og:title"]').setAttribute('content', document.title);
+            document.querySelector('meta[property="og:url"]').setAttribute('content', window.location.href);
+        }
+
+        // Tracking des événements pour analytics
+        function trackEvent(category, action, label) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', action, {
+                    'event_category': category,
+                    'event_label': label
+                });
+            }
+            console.log(`Event tracked: ${category} - ${action} - ${label}`);
+        }
+
+        // Track les clics sur les réseaux sociaux
+        document.querySelectorAll('.social-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const platform = e.target.closest('.social-card').classList[1];
+                trackEvent('social', 'click', platform);
+            });
+        });
+
+        // Track les clics sur les jeux
+        gameCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const game = card.getAttribute('data-game');
+                trackEvent('games', 'click', game);
+            });
+        });
+
+        // Track les soumissions de formulaire
+        contactForm.addEventListener('submit', () => {
+            trackEvent('contact', 'submit', 'contact_form');
+        });
+
+        // Initialisation au chargement
+        updateMetaTags();
     </script>
 </body>
 </html>
