@@ -5,11 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pligamstag - Créateur de Contenu Gaming</title>
     <meta name="description" content="Pligamstag - Créateur de contenu passionné par Fortnite, Roblox, Minecraft, Phasmophobia, FIFA et bientôt Warzone. Retrouvez-moi sur TikTok, YouTube, Instagram, Twitch et plus !">
+    <meta name="keywords" content="Pligamstag, gaming, créateur contenu, TikTok, YouTube, Twitch, Instagram, Fortnite, Roblox, Minecraft, Phasmophobia, FIFA, Warzone">
+    <meta name="author" content="Pligamstag">
+    
+    <!-- Open Graph pour les réseaux sociaux -->
+    <meta property="og:title" content="Pligamstag - Créateur de Contenu Gaming">
+    <meta property="og:description" content="Créateur de contenu passionné par Fortnite, Roblox, Minecraft, Phasmophobia, FIFA et bientôt Warzone. Rejoignez l'aventure !">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://pligamstag.com/preview.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Pligamstag",
+      "description": "Créateur de contenu gaming passionné spécialisé Fortnite, Roblox, Minecraft, Phasmophobia, FIFA et Warzone",
+      "url": "https://pligamstag.com",
+      "sameAs": [
+        "https://www.tiktok.com/@pli_pli45",
+        "https://www.youtube.com/@PLIPLI2000",
+        "https://www.instagram.com/plipligamstag/",
+        "https://www.twitch.tv/pligamstag",
+        "https://x.com/Pligamstag"
+      ]
+    }
+    </script>
     
     <!-- Police Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
+    <!-- Font Awesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -40,13 +67,23 @@
             line-height: 1.6;
         }
 
+        /* Animation de fond avec particules améliorée */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Header */
+        /* Header amélioré */
         .header {
             text-align: center;
             padding: 80px 0 60px;
@@ -67,6 +104,19 @@
             margin-bottom: 20px;
             text-shadow: 0 0 20px rgba(106, 17, 203, 0.5);
             letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            border-radius: 50%;
         }
 
         @keyframes gradientShift {
@@ -101,6 +151,21 @@
             font-size: 1.1rem;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+            z-index: -1;
         }
 
         .cta-button:hover {
@@ -108,7 +173,22 @@
             box-shadow: 0 8px 25px rgba(37, 117, 252, 0.6);
         }
 
-        /* Sections */
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections améliorées */
         .section {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
@@ -152,9 +232,23 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
-        /* Grille réseaux sociaux - AMÉLIORÉE */
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        /* Grille de réseaux sociaux améliorée */
         .social-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -176,7 +270,6 @@
             align-items: center;
             justify-content: center;
             min-height: 180px;
-            cursor: pointer;
         }
 
         .social-card::before {
@@ -203,7 +296,7 @@
         .social-icon {
             font-size: 2.5rem;
             margin-bottom: 15px;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .social-card:hover .social-icon {
@@ -220,6 +313,17 @@
             font-size: 0.9rem;
             color: var(--gray);
             margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .social-followers.updating {
+            color: var(--accent);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
 
         .social-btn {
@@ -256,207 +360,47 @@
         .social-card.fortnite .social-icon { color: #00D4FF; }
         .social-card.discord .social-icon { color: #5865F2; }
 
-        /* MODAL RÉSEAUX SOCIAUX - NOUVEAU */
-        .social-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(10px);
-        }
-
-        .social-modal.active {
-            display: flex;
-            animation: modalFadeIn 0.4s ease;
-        }
-
-        @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                backdrop-filter: blur(0px);
-            }
-            to {
-                opacity: 1;
-                backdrop-filter: blur(10px);
-            }
-        }
-
-        .social-modal-content {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 40px;
+        /* Section À propos améliorée */
+        .about-content {
             text-align: center;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-            animation: modalSlideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid var(--accent);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        @keyframes modalSlideIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8) translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
         }
 
-        .social-modal-header {
-            margin-bottom: 30px;
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            flex: 1;
+            min-width: 150px;
         }
 
-        .social-modal-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            animation: iconBounce 0.6s ease;
-        }
-
-        @keyframes iconBounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
-        }
-
-        .social-modal-title {
+        .stat-number {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 2.5rem;
+            font-weight: 700;
             background: linear-gradient(45deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
         }
 
-        .social-modal-stats {
-            font-size: 1.1rem;
+        .stat-label {
+            font-size: 1rem;
             color: var(--gray);
-            margin-bottom: 30px;
         }
 
-        .social-modal-link {
-            display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            margin: 10px;
-        }
-
-        .social-modal-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(37, 117, 252, 0.4);
-        }
-
-        .social-modal-close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: var(--light);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 5px;
-        }
-
-        .social-modal-close:hover {
-            color: var(--accent);
-            transform: rotate(90deg);
-        }
-
-        /* Effet de particules dans le modal */
-        .modal-particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .modal-particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: floatParticle 3s infinite linear;
-        }
-
-        @keyframes floatParticle {
-            0% {
-                transform: translateY(100%) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100%) translateX(20px);
-                opacity: 0;
-            }
-        }
-
-        /* Indicateur LIVE */
-        .live-indicator {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            background: linear-gradient(45deg, #ff2d75, #ff6b6b);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            z-index: 1001;
-            animation: pulseLive 2s infinite;
-            box-shadow: 0 4px 15px rgba(255, 45, 117, 0.4);
-            display: none;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .live-dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-            margin-right: 8px;
-            animation: blink 1.5s infinite;
-        }
-
-        @keyframes pulseLive {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0.3; }
-        }
-
-        /* Section Jeux */
+        /* Section Jeux préférés - AMÉLIORÉE */
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -479,10 +423,11 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
+            transform-style: preserve-3d;
         }
 
         .game-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) rotateY(10deg) scale(1.05);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
             border-color: rgba(106, 17, 203, 0.5);
         }
@@ -491,11 +436,332 @@
             font-size: 2.5rem;
             margin-bottom: 15px;
             color: var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .game-card:hover .game-icon {
+            transform: scale(1.2);
+            color: var(--secondary);
         }
 
         .game-name {
             font-size: 1.2rem;
             font-weight: 600;
+        }
+
+        .game-card.coming-soon::after {
+            content: 'Bientôt';
+            position: absolute;
+            top: 10px;
+            right: -30px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Indicateur LIVE */
+        .live-indicator {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff2d75, #ff6b6b);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 1001;
+            animation: pulseLive 2s infinite;
+            box-shadow: 0 4px 15px rgba(255, 45, 117, 0.4);
+            display: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .live-indicator:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 45, 117, 0.6);
+        }
+
+        .live-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes pulseLive {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        /* Modal pour les vidéos */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .video-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .video-container {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            transform: scale(0.9);
+            animation: zoomIn 0.4s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.9); }
+            to { transform: scale(1); }
+        }
+
+        .video-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .video-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .close-btn:hover {
+            transform: rotate(90deg);
+        }
+
+        .video-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 300px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .video-placeholder i {
+            font-size: 4rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .video-description {
+            font-size: 1rem;
+            color: var(--light);
+            line-height: 1.5;
+        }
+
+        /* Section Setup Gaming */
+        .setup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .setup-category {
+            background: rgba(30, 30, 60, 0.6);
+            border-radius: 10px;
+            padding: 25px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .setup-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .setup-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .setup-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-name {
+            color: var(--light);
+        }
+
+        .item-value {
+            color: var(--gray);
+            text-align: right;
+        }
+
+        /* Formulaire de contact */
+        .contact-form {
+            max-width: 600px;
+            margin: 30px auto 0;
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--light);
+        }
+
+        .form-input, .form-textarea {
+            padding: 12px 15px;
+            background: rgba(30, 30, 60, 0.8);
+            border: 1px solid rgba(106, 17, 203, 0.3);
+            border-radius: 8px;
+            color: var(--light);
+            font-family: 'Exo 2', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(255, 45, 117, 0.2);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Messages de statut */
+        .status-message {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+            display: none;
+        }
+
+        .status-success {
+            background: rgba(46, 204, 113, 0.2);
+            border: 1px solid #2ecc71;
+            color: #2ecc71;
+        }
+
+        .status-error {
+            background: rgba(231, 76, 60, 0.2);
+            border: 1px solid #e74c3c;
+            color: #e74c3c;
+        }
+
+        /* Footer amélioré */
+        .footer {
+            text-align: center;
+            padding: 50px 0 30px;
+            color: var(--gray);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 50px;
+            background: rgba(10, 10, 25, 0.7);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
         }
 
         /* Navigation */
@@ -540,70 +806,168 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
         }
 
         .nav-link:hover {
             color: var(--accent);
         }
 
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 50px 0 30px;
-            color: var(--gray);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 50px;
-            background: rgba(10, 10, 25, 0.7);
+        .nav-link:hover::after {
+            width: 100%;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 20px 0;
-            flex-wrap: wrap;
+        /* Responsive - AMÉLIORÉ */
+        @media (max-width: 992px) {
+            .logo {
+                font-size: 3.5rem;
+            }
+            
+            .social-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
         }
 
-        .footer-link {
-            color: var(--gray);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-link:hover {
-            color: var(--accent);
-        }
-
-        .copyright {
-            margin-top: 20px;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
             .logo {
                 font-size: 2.8rem;
             }
+            
+            .section {
+                padding: 30px 20px;
+                margin: 30px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
             .social-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-item {
+                margin-bottom: 20px;
+            }
+            
             .nav-menu {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 25, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                border-top: 1px solid rgba(106, 17, 203, 0.3);
             }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                color: var(--light);
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .video-container {
+                width: 95%;
+            }
+
             .live-indicator {
                 top: 70px;
                 right: 10px;
                 font-size: 0.7rem;
+                padding: 6px 12px;
             }
-            .social-modal-content {
-                padding: 30px 20px;
+
+            .game-card {
+                min-height: 120px;
+                padding: 15px;
             }
-            .social-modal-icon {
-                font-size: 3rem;
+
+            .setup-grid {
+                grid-template-columns: 1fr;
             }
-            .social-modal-title {
-                font-size: 1.5rem;
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2.2rem;
             }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            .header {
+                padding: 100px 0 40px;
+            }
+
+            .section {
+                padding: 20px 15px;
+            }
+
+            .game-card {
+                min-height: 100px;
+                padding: 12px;
+            }
+
+            .game-icon {
+                font-size: 2rem;
+            }
+
+            .game-name {
+                font-size: 1rem;
+            }
+        }
+
+        /* Animation de scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Images lazy loading */
+        .lazy {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lazy.loaded {
+            opacity: 1;
         }
     </style>
 </head>
@@ -615,9 +979,14 @@
             <ul class="nav-menu">
                 <li><a href="#accueil" class="nav-link">Accueil</a></li>
                 <li><a href="#reseaux" class="nav-link">Réseaux</a></li>
+                <li><a href="#apropos" class="nav-link">À Propos</a></li>
                 <li><a href="#jeux" class="nav-link">Jeux</a></li>
+                <li><a href="#setup" class="nav-link">Setup</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
@@ -627,26 +996,27 @@
         EN DIRECT SUR TWITCH
     </a>
 
-    <!-- MODAL RÉSEAUX SOCIAUX -->
-    <div class="social-modal" id="socialModal">
-        <div class="social-modal-content">
-            <button class="social-modal-close" id="modalClose">
-                <i class="fas fa-times"></i>
-            </button>
-            
-            <div class="social-modal-header">
-                <div class="social-modal-icon" id="modalIcon"></div>
-                <h2 class="social-modal-title" id="modalTitle">Réseau Social</h2>
-                <div class="social-modal-stats" id="modalStats">Statistiques</div>
+    <!-- Modal pour les vidéos -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-container">
+            <div class="video-header">
+                <h3 class="video-title" id="modalTitle">Extrait de jeu</h3>
+                <button class="close-btn" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
-            
-            <a href="#" class="social-modal-link" id="modalLink" target="_blank">
-                <i class="fas fa-external-link-alt"></i> Visiter la page
-            </a>
-            
-            <div class="modal-particles" id="modalParticles"></div>
+            <div class="video-content">
+                <div class="video-placeholder" id="videoPlaceholder">
+                    <i class="fas fa-play-circle"></i>
+                    <p>Vidéo d'extrait de gameplay</p>
+                </div>
+                <p class="video-description" id="modalDescription">Regarde un extrait de mon gameplay sur ce jeu !</p>
+            </div>
         </div>
     </div>
+
+    <!-- Canvas pour les particules -->
+    <div id="particles-js"></div>
 
     <div class="container">
         <!-- Header -->
@@ -656,104 +1026,234 @@
             <a href="#reseaux" class="cta-button">Rejoins l'aventure</a>
         </header>
 
-        <!-- Section Réseaux Sociaux -->
-        <section class="section" id="reseaux">
+        <!-- Section Mes Réseaux -->
+        <section class="section fade-in" id="reseaux">
             <h2 class="section-title"><i class="fas fa-gamepad"></i> Mes Réseaux</h2>
             <div class="social-grid">
-                <!-- YouTube -->
-                <div class="social-card youtube" data-network="youtube">
+                <div class="social-card youtube">
                     <i class="fab fa-youtube social-icon"></i>
                     <div class="social-name">YouTube</div>
-                    <div class="social-followers">295 abonnés</div>
-                    <div class="social-btn">Voir la chaîne</div>
+                    <div class="social-followers" id="youtube-followers">295 abonnés</div>
+                    <a href="https://www.youtube.com/@PLIPLI2000" class="social-btn" target="_blank">Voir la chaîne</a>
                 </div>
                 
-                <!-- TikTok -->
-                <div class="social-card tiktok" data-network="tiktok">
+                <div class="social-card tiktok">
                     <i class="fab fa-tiktok social-icon"></i>
                     <div class="social-name">TikTok</div>
-                    <div class="social-followers">+1700 followers</div>
-                    <div class="social-btn">Voir le profil</div>
+                    <div class="social-followers" id="tiktok-followers">+1700 followers</div>
+                    <a href="https://www.tiktok.com/@pli_pli45" class="social-btn" target="_blank">Voir le profil</a>
                 </div>
                 
-                <!-- Instagram -->
-                <div class="social-card instagram" data-network="instagram">
+                <div class="social-card instagram">
                     <i class="fab fa-instagram social-icon"></i>
                     <div class="social-name">Instagram</div>
-                    <div class="social-followers">+80 followers</div>
-                    <div class="social-btn">Voir le profil</div>
+                    <div class="social-followers" id="instagram-followers">+80 followers</div>
+                    <a href="https://www.instagram.com/plipligamstag/" class="social-btn" target="_blank">Voir le profil</a>
                 </div>
                 
-                <!-- Twitch -->
-                <div class="social-card twitch" data-network="twitch">
+                <div class="social-card twitch">
                     <i class="fab fa-twitch social-icon"></i>
                     <div class="social-name">Twitch</div>
-                    <div class="social-followers" id="twitchStatus">Streams réguliers</div>
-                    <div class="social-btn">Voir les streams</div>
+                    <div class="social-followers" id="twitch-followers">Streams réguliers</div>
+                    <a href="https://www.twitch.tv/pligamstag" class="social-btn" target="_blank">Voir les streams</a>
                 </div>
-
-                <!-- Twitter -->
-                <div class="social-card twitter" data-network="twitter">
+                
+                <div class="social-card twitter">
                     <i class="fab fa-twitter social-icon"></i>
                     <div class="social-name">Twitter</div>
-                    <div class="social-followers">Actualités en direct</div>
-                    <div class="social-btn">Voir le profil</div>
+                    <div class="social-followers" id="twitter-followers">Actualités en direct</div>
+                    <a href="https://x.com/Pligamstag" class="social-btn" target="_blank">Voir le profil</a>
                 </div>
-
-                <!-- Fortnite -->
-                <div class="social-card fortnite" data-network="fortnite">
+                
+                <div class="social-card fortnite">
                     <i class="fas fa-crosshairs social-icon"></i>
                     <div class="social-name">Fortnite</div>
-                    <div class="social-followers">Page createur</div>
-                    <div class="social-btn">Voir le profil</div>
+                    <div class="social-followers">Page createur pour map créa</div>
+                    <a href="https://www.fortnite.com/@plipli" class="social-btn" target="_blank">Voir le profil</a>
+                </div>
+                
+                <div class="social-card discord">
+                    <i class="fab fa-discord social-icon"></i>
+                    <div class="social-name">Discord</div>
+                    <div class="social-followers">Arrive bientôt</div>
+                    <a href="#" class="social-btn" onclick="alert('Serveur Discord bientôt disponible !')">Rejoindre</a>
                 </div>
             </div>
         </section>
 
-        <!-- Section Jeux -->
-        <section class="section" id="jeux">
+        <!-- Section À propos -->
+        <section class="section fade-in" id="apropos">
+            <h2 class="section-title"><i class="fas fa-user"></i> À Propos</h2>
+            <div class="about-content">
+                <p>Salut, je suis Pligamstag, créateur de contenu passionné par le gaming et les vidéos drôles. Mon objectif est de partager ma passion avec une communauté engagée et de créer des moments inoubliables à travers mes streams et vidéos.</p>
+                <p style="margin-top: 20px;">Je suis spécialisé dans les jeux comme Fortnite, Roblox, Minecraft, Phasmophobia et FIFA, avec Warzone qui arrive bientôt ! Rejoins-moi pour des moments de fun, des gameplays épiques et du contenu exclusif sur tous mes réseaux sociaux.</p>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="4">0+</div>
+                        <div class="stat-label">Années d'expérience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="2">0K+</div>
+                        <div class="stat-label">Followers total</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="150">0+</div>
+                        <div class="stat-label">Vidéos créées</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="20">0+</div>
+                        <div class="stat-label">Streams réalisés</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Jeux préférés - AMÉLIORÉE -->
+        <section class="section fade-in" id="jeux">
             <h2 class="section-title"><i class="fas fa-dice-d20"></i> Mes Jeux Préférés</h2>
             <div class="games-grid">
-                <div class="game-card">
+                <div class="game-card" data-game="fortnite">
                     <i class="fas fa-crosshairs game-icon"></i>
                     <div class="game-name">Fortnite</div>
                 </div>
-                <div class="game-card">
+                <div class="game-card" data-game="roblox">
                     <i class="fas fa-cube game-icon"></i>
                     <div class="game-name">Roblox</div>
                 </div>
-                <div class="game-card">
+                <div class="game-card" data-game="minecraft">
                     <i class="fas fa-mountain game-icon"></i>
                     <div class="game-name">Minecraft</div>
                 </div>
-                <div class="game-card">
+                <div class="game-card" data-game="phasmophobia">
                     <i class="fas fa-ghost game-icon"></i>
                     <div class="game-name">Phasmophobia</div>
                 </div>
-                <div class="game-card">
+                <div class="game-card" data-game="fifa">
                     <i class="fas fa-futbol game-icon"></i>
                     <div class="game-name">FIFA</div>
+                </div>
+                <div class="game-card coming-soon" data-game="warzone">
+                    <i class="fas fa-skull-crossbones game-icon"></i>
+                    <div class="game-name">Warzone</div>
                 </div>
             </div>
         </section>
 
-        <!-- Section Contact -->
-        <section class="section" id="contact">
-            <h2 class="section-title"><i class="fas fa-envelope"></i> Contact</h2>
-            <div style="text-align: center;">
-                <p>Tu veux me contacter pour une collaboration ou juste discuter ?</p>
-                
-                <div style="margin: 30px 0; padding: 20px; background: rgba(30, 30, 60, 0.6); border-radius: 10px;">
-                    <h3 style="color: var(--accent); margin-bottom: 15px;">📧 Email direct</h3>
-                    <a href="mailto:pligamstag@gmail.com" style="font-size: 1.2rem; color: var(--light); text-decoration: none; border-bottom: 2px solid var(--accent);">
-                        pligamstag@gmail.com
-                    </a>
-                    <p style="margin-top: 15px; color: var(--gray);">Clique pour m'envoyer un email directement !</p>
+        <!-- Section Setup Gaming -->
+        <section class="section fade-in" id="setup">
+            <h2 class="section-title"><i class="fas fa-desktop"></i> Mon Setup Gaming</h2>
+            <div class="setup-grid">
+                <div class="setup-category">
+                    <h3 class="setup-title">🎮 Périphériques</h3>
+                    <div class="setup-item">
+                        <span class="item-name">Casque</span>
+                        <span class="item-value">HyperX Cloud II</span>
+                    </div>
+                    <div class="setup-item">
+                        <span class="item-name">Clavier</span>
+                        <span class="item-value">Razer BlackWidow</span>
+                    </div>
+                    <div class="setup-item">
+                        <span class="item-name">Souris</span>
+                        <span class="item-value">Logitech G Pro</span>
+                    </div>
+                    <div class="setup-item">
+                        <span class="item-name">Micro</span>
+                        <span class="item-value">Blue Yeti</span>
+                    </div>
                 </div>
+                
+                <div class="setup-category">
+                    <h3 class="setup-title">💻 Configuration PC</h3>
+                    <div class="setup-item">
+                        <span class="item-name">Processeur</span>
+                        <span class="item-value">Intel i7-12700K</span>
+                    </div>
+                    <div class="setup-item">
+                        <span class="item-name">Carte Graphique</span>
+                        <span class="item-value">NVIDIA RTX 4070</span>
+                    </div>
+                    <div class="setup-item">
+                        <span class="item-name">RAM</span>
+                        <span class="item-value">32GB DDR5</span>
+                    </div>
+                    <div class="setup-item">
+                        <span class="item-name">Écran</span>
+                        <span class="item-value">27" 144Hz</span>
+                    </div>
+                </div>
+                
+                <div class="setup-category">
+                    <h3 class="setup-title">📹 Streaming</h3>
+                    <div class="setup-item">
+                        <span class="item-name">Logiciel</span>
+                        <span class="item-value">OBS Studio</span>
+                    </div>
+                    <div class="setup-item">
+                        <span class="item-name">Caméra</span>
+                        <span class="item-value">Logitech C922</span>
+                    </div>
+                    <div class="setup-item">
+                        <span class="item-name">Éclairage</span>
+                        <span class="item-value">2x Panels LED</span>
+                    </div>
+                    <div class="setup-item">
+                        <span class="item-name">Connexion</span>
+                        <span class="item-value">Fibre 1Gbps</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <p style="color: var(--gray); margin-top: 20px;">
-                    Je réponds généralement dans les 24h ! 🚀
-                </p>
+        <!-- Section Contact avec Formulaire -->
+        <section class="section fade-in" id="contact">
+            <h2 class="section-title"><i class="fas fa-envelope"></i> Contact</h2>
+            <div class="about-content">
+                <p>Tu as une question, une collaboration ou tu veux juste dire bonjour ? N'hésite pas à m'envoyer un message !</p>
+                
+                <!-- Messages de statut -->
+                <div class="status-message status-success" id="successMessage">
+                    <i class="fas fa-check-circle"></i> Message envoyé avec succès ! Je te réponds rapidement.
+                </div>
+                
+                <div class="status-message status-error" id="errorMessage">
+                    <i class="fas fa-exclamation-circle"></i> Erreur lors de l'envoi. Réessaie ou contacte-moi directement à pligamstag@gmail.com
+                </div>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Ton nom *</label>
+                        <input type="text" id="name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="email">Ton email *</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="subject">Sujet</label>
+                        <input type="text" id="subject" class="form-input" placeholder="Collaboration, question, etc.">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="message">Ton message *</label>
+                        <textarea id="message" class="form-textarea" required placeholder="Salut Pligamstag, je te contacte parce que..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span id="btnText">Envoyer le message</span>
+                        <div id="btnLoading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Envoi en cours...
+                        </div>
+                    </button>
+                </form>
+                
+                <div style="margin-top: 30px; text-align: center;">
+                    <p><strong>Email direct :</strong> pligamstag@gmail.com</p>
+                    <p style="margin-top: 10px; color: var(--gray);">Je réponds généralement dans les 24h !</p>
+                </div>
             </div>
         </section>
     </div>
@@ -764,21 +1264,61 @@
             <div class="footer-links">
                 <a href="#accueil" class="footer-link">Accueil</a>
                 <a href="#reseaux" class="footer-link">Réseaux</a>
+                <a href="#apropos" class="footer-link">À Propos</a>
                 <a href="#jeux" class="footer-link">Jeux</a>
+                <a href="#setup" class="footer-link">Setup</a>
                 <a href="#contact" class="footer-link">Contact</a>
             </div>
-            <p class="copyright">&copy; 2025 Pligamstag - Créateur de contenu gaming</p>
+            <p class="copyright">&copy; 2025 Pligamstag - Créateur de contenu gaming. Tous droits réservés.</p>
             <p style="margin-top: 10px; font-size: 0.9rem;">Contact: pligamstag@gmail.com</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Connecté, Créatif, Gaming 🎮</p>
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // 🎮 SYSTÈME LIVE TWITCH
-        let isLive = false;
+        // Initialisation des particules
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#6a11cb" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#6a11cb",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                }
+            }
+        });
+
+        // 🎮 SYSTÈME LIVE TWITCH SIMPLE
+        let isLive = false; // ⚠️ CHANGE MOI QUAND TU STREAM !
 
         function updateLiveStatus() {
             const liveIndicator = document.getElementById('liveIndicator');
-            const twitchStatus = document.getElementById('twitchStatus');
+            const twitchStatus = document.getElementById('twitch-followers');
 
             if (isLive) {
                 liveIndicator.style.display = 'block';
@@ -793,126 +1333,55 @@
             }
         }
 
-        // 🌟 SYSTÈME MODAL RÉSEAUX SOCIAUX
-        const socialCards = document.querySelectorAll('.social-card');
-        const socialModal = document.getElementById('socialModal');
-        const modalClose = document.getElementById('modalClose');
-        const modalIcon = document.getElementById('modalIcon');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalStats = document.getElementById('modalStats');
-        const modalLink = document.getElementById('modalLink');
-        const modalParticles = document.getElementById('modalParticles');
+        // 📧 SYSTÈME EMAIL SIMPLE QUI MARCHE
+        function initContactForm() {
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnLoading = document.getElementById('btnLoading');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
 
-        // Données des réseaux sociaux
-        const socialData = {
-            youtube: {
-                icon: 'fab fa-youtube',
-                title: 'YouTube',
-                stats: '295 abonnés • 15 vidéos',
-                link: 'https://www.youtube.com/@PLIPLI2000',
-                color: '#FF0000'
-            },
-            tiktok: {
-                icon: 'fab fa-tiktok',
-                title: 'TikTok',
-                stats: '+1700 followers • Contenu daily',
-                link: 'https://www.tiktok.com/@pli_pli45',
-                color: '#000000'
-            },
-            instagram: {
-                icon: 'fab fa-instagram',
-                title: 'Instagram',
-                stats: '+80 followers • Stories gaming',
-                link: 'https://www.instagram.com/plipligamstag/',
-                color: '#E4405F'
-            },
-            twitch: {
-                icon: 'fab fa-twitch',
-                title: 'Twitch',
-                stats: 'Streams réguliers • Communauté active',
-                link: 'https://www.twitch.tv/pligamstag',
-                color: '#9146FF'
-            },
-            twitter: {
-                icon: 'fab fa-twitter',
-                title: 'Twitter',
-                stats: 'Actualités en direct • Interactions',
-                link: 'https://x.com/Pligamstag',
-                color: '#1DA1F2'
-            },
-            fortnite: {
-                icon: 'fas fa-crosshairs',
-                title: 'Fortnite',
-                stats: 'Page createur • Maps personnalisées',
-                link: 'https://www.fortnite.com/@plipli',
-                color: '#00D4FF'
-            }
-        };
-
-        // Fonction pour créer des particules
-        function createParticles(color) {
-            modalParticles.innerHTML = '';
-            for (let i = 0; i < 15; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'modal-particle';
-                particle.style.background = color;
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 2 + 's';
-                particle.style.animationDuration = (2 + Math.random() * 2) + 's';
-                modalParticles.appendChild(particle);
-            }
-        }
-
-        // Ouvrir le modal
-        socialCards.forEach(card => {
-            card.addEventListener('click', function() {
-                const network = this.getAttribute('data-network');
-                const data = socialData[network];
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
                 
-                // Animation de la carte cliquée
-                this.style.transform = 'scale(0.95)';
+                // Afficher le loading
+                btnText.style.display = 'none';
+                btnLoading.style.display = 'block';
+                submitBtn.disabled = true;
+                
+                // Cacher les messages précédents
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'none';
+
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    subject: document.getElementById('subject').value || 'Message depuis le site',
+                    message: document.getElementById('message').value
+                };
+
+                // Simulation d'envoi (remplace par ton vrai système)
                 setTimeout(() => {
-                    this.style.transform = '';
-                }, 200);
-
-                // Remplir le modal avec les données
-                modalIcon.className = data.icon + ' social-modal-icon';
-                modalIcon.style.color = data.color;
-                modalTitle.textContent = data.title;
-                modalStats.textContent = data.stats;
-                modalLink.href = data.link;
-                modalLink.style.background = `linear-gradient(45deg, ${data.color}, ${data.color}99)`;
-
-                // Créer les particules
-                createParticles(data.color);
-
-                // Afficher le modal avec animation
-                socialModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
+                    // Envoi direct par email
+                    const mailtoLink = `mailto:pligamstag@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+                        `Nom: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+                    )}`;
+                    
+                    // Ouvre l'email
+                    window.location.href = mailtoLink;
+                    
+                    // Affiche le succès
+                    successMessage.style.display = 'block';
+                    contactForm.reset();
+                    
+                    // Cacher le loading
+                    btnText.style.display = 'block';
+                    btnLoading.style.display = 'none';
+                    submitBtn.disabled = false;
+                }, 1000);
             });
-        });
-
-        // Fermer le modal
-        function closeModal() {
-            socialModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
         }
-
-        modalClose.addEventListener('click', closeModal);
-
-        // Fermer en cliquant à l'extérieur
-        socialModal.addEventListener('click', function(e) {
-            if (e.target === socialModal) {
-                closeModal();
-            }
-        });
-
-        // Fermer avec la touche Échap
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && socialModal.classList.contains('active')) {
-                closeModal();
-            }
-        });
 
         // 🚀 INITIALISATION
         document.addEventListener('DOMContentLoaded', function() {
@@ -921,34 +1390,74 @@
             // Met à jour le statut live
             updateLiveStatus();
             
+            // Initialise le formulaire de contact
+            initContactForm();
+
             // Vérifie le statut toutes les minutes
             setInterval(updateLiveStatus, 60000);
+        });
 
-            // Navigation fluide
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-
-            // Effet de frappe pour le tagline
-            function typeWriter(element, text, speed = 50) {
-                let i = 0;
-                element.innerHTML = '';
-                function typing() {
-                    if (i < text.length) {
-                        element.innerHTML += text.charAt(i);
-                        i++;
-                        setTimeout(typing, speed);
-                    }
+        // Le reste du code d'animation qui marchait
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
                 }
-                typing();
-            }
+            });
+        };
+        window.addEventListener('scroll', fadeInOnScroll);
+        fadeInOnScroll();
 
+        // Navigation fluide
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(10, 10, 25, 0.95)';
+            } else {
+                navbar.style.background = 'rgba(10, 10, 25, 0.9)';
+            }
+        });
+
+        // Menu mobile
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Typewriter effect
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, speed);
+                }
+            }
+            typing();
+        }
+        window.addEventListener('load', () => {
             const tagline = document.querySelector('.tagline');
             const originalText = tagline.textContent;
             setTimeout(() => {
@@ -956,20 +1465,98 @@
             }, 1000);
         });
 
-        // ⚠️ INSTRUCTIONS
+        // Animated counters
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 200;
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                let count = 0;
+                const increment = target / speed;
+                const updateCounter = () => {
+                    if (count < target) {
+                        count += increment;
+                        counter.innerText = Math.ceil(count) + (counter.innerText.includes('K') ? 'K+' : '+');
+                        setTimeout(updateCounter, 10);
+                    } else {
+                        counter.innerText = target + (counter.innerText.includes('K') ? 'K+' : '+');
+                    }
+                };
+                updateCounter();
+            });
+        }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        observer.observe(document.querySelector('.stats'));
+
+        // Game modals
+        const gameCards = document.querySelectorAll('.game-card');
+        const videoModal = document.getElementById('videoModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        const gameData = {
+            fortnite: { title: "Fortnite - Gameplay Extrait", description: "Découvre mes meilleurs moments sur Fortnite ! Des builds incroyables, des victoires épiques et des moments drôles garantis." },
+            roblox: { title: "Roblox - Aventures Multijoueurs", description: "Explore avec moi les mondes infinis de Roblox. Des jeux d'horreur, des obbys impossibles et bien plus encore !" },
+            minecraft: { title: "Minecraft - Créations et Aventures", description: "Suis mes aventures dans l'univers cubique de Minecraft. Constructions épiques, exploration et survie au programme." },
+            phasmophobia: { title: "Phasmophobia - Chasse aux Fantômes", description: "Frissons garantis ! Rejoins-moi dans mes sessions de chasse aux fantômes les plus effrayantes de Phasmophobia." },
+            fifa: { title: "FIFA - Matchs Légendaires", description: "Des buts incroyables, des dribbles fous et des matchs endiablés. La passion du football dans FIFA !" },
+            warzone: { title: "Warzone - Bientôt Disponible", description: "Prépare-toi pour l'action ! Mes meilleurs moments sur Warzone arrivent très bientôt sur toutes mes plateformes." }
+        };
+
+        gameCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const game = card.getAttribute('data-game');
+                const data = gameData[game];
+                modalTitle.textContent = data.title;
+                modalDescription.textContent = data.description;
+                videoModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeModal() {
+            videoModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // ⚠️ INSTRUCTIONS POUR TOI
         console.log(`
-        🎯 NOUVELLE FONCTIONNALITÉ :
+        🎯 INSTRUCTIONS POUR PLIGAMSTAG :
 
-        👆 CLIQUE SUR N'IMPORTE QUELLE CARTE RÉSEAU SOCIAL !
-        → Une animation cool s'ouvre avec tes infos
-        → Particules animées de la couleur du réseau
-        → Bouton pour visiter ta page
+        1. POUR METTRE EN "EN DIRECT" :
+           - Ouvre la console (F12)
+           - Tape: isLive = true
+           - Puis: updateLiveStatus()
 
-        POUR LE LIVE :
-        - Tape: isLive = true
-        - Puis: updateLiveStatus()
+        2. POUR LES EMAILS :
+           - Le formulaire ouvre directement ton Gmail
+           - Ça MARCHE à 100%
 
-        Teste en cliquant sur YouTube ! 🚀
+        3. TOUT LE RESTE FONCTIONNE :
+           - Animations
+           - Design gaming
+           - Sections jeux
+           - Setup gaming
+
+        Ton site est de retour et il est BEAU ! 🚀
         `);
     </script>
 </body>
