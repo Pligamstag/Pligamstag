@@ -704,6 +704,28 @@
             cursor: pointer;
         }
 
+        .bio-menu-btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+        }
+
+        .bio-menu-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(106, 17, 203, 0.5);
+        }
+
+        .bio-menu-btn i {
+            margin-right: 8px;
+        }
+
         @media (max-width: 992px) {
             .logo {
                 font-size: 3.5rem;
@@ -745,8 +767,10 @@
                 display: none;
             }
             
-            .mobile-menu-btn {
+            .bio-menu-btn {
                 display: block;
+                padding: 8px 15px;
+                font-size: 0.85rem;
             }
 
             .live-indicator {
@@ -835,8 +859,8 @@
                 <li><a href="#setup" class="nav-link">Setup</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
+            <button class="bio-menu-btn" id="openBioBtn">
+                <i class="fas fa-book-open"></i> Ma Bio
             </button>
         </div>
     </nav>
@@ -1294,12 +1318,12 @@
 
         // Système du panneau latéral
         function initStatsSidebar() {
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const openBioBtn = document.getElementById('openBioBtn');
             const statsSidebar = document.getElementById('statsSidebar');
             const statsOverlay = document.getElementById('statsOverlay');
             const closeStatsSidebar = document.getElementById('closeStatsSidebar');
 
-            mobileMenuBtn.addEventListener('click', function() {
+            openBioBtn.addEventListener('click', function() {
                 statsSidebar.classList.add('active');
                 statsOverlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
