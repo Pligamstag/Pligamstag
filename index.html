@@ -1359,10 +1359,14 @@
             const fanErrorText = document.getElementById('fanErrorText');
             const fanCountDisplay = document.getElementById('fanCount');
 
+            console.log('🎮 Système de fans initialisé');
+            
+            // Charger le compteur au démarrage
             await loadFanCount();
 
             fanForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
+                console.log('📝 Formulaire soumis');
                 
                 fanBtnText.style.display = 'none';
                 fanBtnLoading.style.display = 'block';
@@ -1376,24 +1380,40 @@
                     email: document.getElementById('fanEmail').value.trim().toLowerCase()
                 };
 
+                console.log('👤 Données:', fanData);
+
                 try {
-                    const existingFan = await window.storage.get(`fan:${fanData.email}`, true);
+                    // Vérifier si l'email existe déjà
+                    let existingFan = null;
+                    try {
+                        existingFan = await window.storage.get(`fan:${fanData.email}`, true);
+                    } catch (err) {
+                        // L'email n'existe pas encore, c'est normal
+                        console.log('✅ Nouvel email, inscription possible');
+                    }
                     
                     if (existingFan) {
+                        console.log('⚠️ Email déjà inscrit');
                         fanErrorText.textContent = 'Tu es déjà inscrit avec cet email ! Merci pour ton soutien 💜';
                         fanErrorMessage.style.display = 'block';
                         setTimeout(() => {
                             fanErrorMessage.style.display = 'none';
                         }, 5000);
                     } else {
-                        await window.storage.set(`fan:${fanData.email}`, JSON.stringify({
+                        // Enregistrer le nouveau fan
+                        console.log('💾 Enregistrement du fan...');
+                        const saveResult = await window.storage.set(`fan:${fanData.email}`, JSON.stringify({
                             name: fanData.name,
                             email: fanData.email,
                             date: new Date().toISOString()
                         }), true);
                         
+                        console.log('✅ Fan enregistré:', saveResult);
+                        
+                        // Incrémenter le compteur
                         await incrementFanCount();
                         
+                        // Afficher le succès
                         fanSuccessMessage.style.display = 'block';
                         fanForm.reset();
                         
@@ -1404,8 +1424,8 @@
                         }, 8000);
                     }
                 } catch (error) {
-                    console.error('Erreur lors de l\'inscription:', error);
-                    fanErrorText.textContent = 'Une erreur est survenue. Réessaie dans quelques instants !';
+                    console.error('❌ Erreur lors de l\'inscription:', error);
+                    fanErrorText.textContent = 'Une erreur est survenue: ' + error.message;
                     fanErrorMessage.style.display = 'block';
                     setTimeout(() => {
                         fanErrorMessage.style.display = 'none';
@@ -1419,23 +1439,37 @@
 
             async function loadFanCount() {
                 try {
+                    console.log('📊 Chargement du compteur...');
                     const countData = await window.storage.get('fan-count', true);
                     const count = countData ? parseInt(JSON.parse(countData.value).count) : 0;
+                    console.log('📊 Compteur actuel:', count);
                     animateFanCount(count);
                 } catch (error) {
+                    console.log('📊 Pas de compteur existant, initialisation à 0');
                     animateFanCount(0);
                 }
             }
 
             async function incrementFanCount() {
                 try {
-                    const countData = await window.storage.get('fan-count', true);
-                    const currentCount = countData ? parseInt(JSON.parse(countData.value).count) : 0;
-                    const newCount = currentCount + 1;
+                    console.log('➕ Incrémentation du compteur...');
+                    let currentCount = 0;
+                    try {
+                        const countData = await window.storage.get('fan-count', true);
+                        currentCount = countData ? parseInt(JSON.parse(countData.value).count) : 0;
+                    } catch (err) {
+                        console.log('Initialisation du compteur');
+                    }
                     
-                    await window.storage.set('fan-count', JSON.stringify({ count: newCount }), true);
+                    const newCount = currentCount + 1;
+                    console.log(`➕ ${currentCount} → ${newCount}`);
+                    
+                    const saveResult = await window.storage.set('fan-count', JSON.stringify({ count: newCount }), true);
+                    console.log('✅ Compteur sauvegardé:', saveResult);
+                    
                     animateFanCount(newCount);
                 } catch (error) {
+                    console.error('❌ Erreur incrémentation:', error);
                     await window.storage.set('fan-count', JSON.stringify({ count: 1 }), true);
                     animateFanCount(1);
                 }
@@ -1443,21 +1477,25 @@
 
             function animateFanCount(target) {
                 const duration = 2000;
-                const start = parseInt(fanCountDisplay.textContent) || 0;
+                const start = parseInt(fanCountDisplay.textContent.replace(/\s/g, '')) || 0;
                 const increment = (target - start) / (duration / 16);
                 let current = start;
 
                 const animate = () => {
                     current += increment;
                     if ((increment > 0 && current < target) || (increment < 0 && current > target)) {
-                        fanCountDisplay.textContent = Math.floor(current).toLocaleString();
+                        fanCountDisplay.textContent = Math.floor(current).toLocaleString('fr-FR');
                         requestAnimationFrame(animate);
                     } else {
-                        fanCountDisplay.textContent = target.toLocaleString();
+                        fanCountDisplay.textContent = target.toLocaleString('fr-FR');
                     }
                 };
 
-                animate();
+                if (start !== target) {
+                    animate();
+                } else {
+                    fanCountDisplay.textContent = target.toLocaleString('fr-FR');
+                }
             }
         }
 
