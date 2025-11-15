@@ -1034,14 +1034,17 @@
         <section class="section fade-in" id="fans">
             <h2 class="section-title"><i class="fas fa-heart"></i> Deviens un Fan de Pligamstag</h2>
             <div class="about-content">
-                <p>Rejoins officiellement la communauté Pligamstag ! Inscris-toi pour montrer ton soutien et faire partie de l'aventure.</p>
+                <p style="font-size: 1.1rem; margin-bottom: 40px;">Rejoins officiellement la communauté Pligamstag ! Inscris-toi pour montrer ton soutien et faire partie de l'aventure.</p>
                 
                 <!-- Compteur de fans -->
-                <div style="margin: 30px auto; max-width: 400px;">
-                    <div style="background: linear-gradient(45deg, var(--primary), var(--secondary)); border-radius: 15px; padding: 30px; text-align: center; box-shadow: 0 10px 30px rgba(106, 17, 203, 0.3);">
-                        <div style="font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 10px;">🌟 FANS OFFICIELS</div>
-                        <div id="fanCount" style="font-family: 'Orbitron', sans-serif; font-size: 3.5rem; font-weight: 900; color: white; text-shadow: 0 0 20px rgba(255,255,255,0.5);">0</div>
-                        <div style="font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-top: 5px;">et ça augmente ! 🚀</div>
+                <div style="margin: 30px auto 40px; max-width: 500px;">
+                    <div style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); border-radius: 20px; padding: 35px; text-align: center; box-shadow: 0 15px 40px rgba(106, 17, 203, 0.4); position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);"></div>
+                        <div style="position: relative; z-index: 1;">
+                            <div style="font-size: 0.95rem; color: rgba(255,255,255,0.9); margin-bottom: 15px; font-weight: 600; letter-spacing: 2px;">⭐ FANS OFFICIELS</div>
+                            <div id="fanCount" style="font-family: 'Orbitron', sans-serif; font-size: 4rem; font-weight: 900; color: white; text-shadow: 0 0 30px rgba(255,255,255,0.6); margin: 10px 0;">0</div>
+                            <div style="font-size: 0.95rem; color: rgba(255,255,255,0.9); margin-top: 10px; font-weight: 500;">et ça augmente ! 🚀</div>
+                        </div>
                     </div>
                 </div>
                 
@@ -1055,18 +1058,18 @@
                 </div>
                 
                 <!-- Formulaire d'inscription fan -->
-                <form class="contact-form" id="fanForm" style="margin-top: 30px;">
+                <form class="contact-form" id="fanForm" style="margin-top: 30px; max-width: 500px;">
                     <div class="form-group">
-                        <label class="form-label" for="fanName">Ton pseudo/nom *</label>
-                        <input type="text" id="fanName" class="form-input" required placeholder="Ex: GamerPro123">
+                        <label class="form-label" for="fanName" style="font-size: 1rem; margin-bottom: 10px;">Ton pseudo/nom *</label>
+                        <input type="text" id="fanName" class="form-input" required placeholder="Pligamstag" style="font-size: 1rem; padding: 14px 18px;">
                     </div>
                     
                     <div class="form-group">
-                        <label class="form-label" for="fanEmail">Ton email *</label>
-                        <input type="email" id="fanEmail" class="form-input" required placeholder="ton.email@example.com">
+                        <label class="form-label" for="fanEmail" style="font-size: 1rem; margin-bottom: 10px;">Ton email *</label>
+                        <input type="email" id="fanEmail" class="form-input" required placeholder="pligamstag@gmail.com" style="font-size: 1rem; padding: 14px 18px;">
                     </div>
                     
-                    <button type="submit" class="submit-btn" id="fanSubmitBtn">
+                    <button type="submit" class="submit-btn" id="fanSubmitBtn" style="width: 100%; padding: 16px 30px; font-size: 1.1rem; margin-top: 10px;">
                         <span id="fanBtnText"><i class="fas fa-heart"></i> Devenir Fan</span>
                         <div id="fanBtnLoading" style="display: none;">
                             <i class="fas fa-spinner fa-spin"></i> Inscription en cours...
@@ -1074,7 +1077,7 @@
                     </button>
                 </form>
                 
-                <div style="margin-top: 20px; text-align: center; color: var(--gray); font-size: 0.9rem;">
+                <div style="margin-top: 25px; text-align: center; color: var(--gray); font-size: 0.95rem; font-style: italic;">
                     <p>En t'inscrivant, tu rejoins une communauté de passionnés de gaming !</p>
                 </div>
             </div>
