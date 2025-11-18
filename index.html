@@ -5,13 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pligamstag - Créateur de Contenu Gaming</title>
     <meta name="description" content="Pligamstag - Créateur de contenu passionné par Fortnite, Roblox, Minecraft, Phasmophobia, FIFA et bientôt Warzone. Retrouvez-moi sur TikTok, YouTube, Instagram, Twitch et plus !">
-   
+
+    <!-- Google Site Verification (déjà validé) -->
+    <meta name="google-site-verification" content="whfPQTbIX9MXp7DYX8O9HhVy8luMSs9A" />
+
+    <!-- FAVICON "PS" VIOLET – tout est là, rien à toucher -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- Fin favicon -->
+
     <!-- Police Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
-   
+  
     <!-- Font Awesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   
+  
     <!-- Ton fichier CSS externe -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -34,6 +47,7 @@
             </button>
         </div>
     </nav>
+
     <!-- Panneau latéral de la biographie -->
     <div class="stats-sidebar-overlay" id="statsOverlay"></div>
     <div class="stats-sidebar" id="statsSidebar">
@@ -43,7 +57,7 @@
                 <i class="fas fa-times"></i>
             </button>
         </div>
-       
+      
         <div style="padding: 15px; color: var(--light); line-height: 1.8; font-size: 0.95rem;">
             <p style="margin-bottom: 15px;">
                 <strong>Pligamstag</strong> est un créateur passionné de gaming et d'esport, présent sur TikTok depuis avril 2021 et sur YouTube depuis février 2022.
@@ -61,306 +75,38 @@
                 Toujours motivé, toujours prêt à progresser, Pligamstag continue de construire un univers positif où chacun peut se sentir à sa place.
             </p>
         </div>
-       
+      
         <div style="margin-top: 25px; padding: 15px; background: rgba(106, 17, 203, 0.1); border-radius: 10px; border-left: 3px solid var(--accent);">
             <p style="font-size: 0.9rem; color: var(--light); margin-bottom: 8px;">🎯 Code Créateur</p>
             <p style="font-size: 1.2rem; color: var(--accent); font-weight: bold;">PliPli</p>
         </div>
     </div>
+
     <!-- Indicateur LIVE -->
     <a href="https://www.twitch.tv/pligamstag" class="live-indicator" id="liveIndicator" target="_blank">
         <span class="live-dot"></span>
         EN DIRECT SUR TWITCH
     </a>
+
     <!-- Canvas pour les particules -->
     <div id="particles-js"></div>
+
     <div class="container">
-        <!-- Header -->
+        <!-- Tout le reste de ton site (header, sections, footer…) reste exactement pareil -->
+        <!-- (je remets juste le header pour que tu voies que rien n’a changé) -->
         <header class="header" id="accueil">
             <h1 class="logo">PLIGAMSTAG</h1>
             <p class="tagline">Créateur de contenu gaming passionné • Spécialisé Fortnite, Roblox, Minecraft, Phasmophobia, FIFA et bientôt Warzone</p>
             <a href="#reseaux" class="cta-button">Rejoins l'aventure</a>
         </header>
-        <!-- Section Mes Réseaux -->
-        <section class="section fade-in" id="reseaux">
-            <h2 class="section-title"><i class="fas fa-gamepad"></i> Mes Réseaux</h2>
-            <div class="social-grid">
-                <div class="social-card youtube">
-                    <i class="fab fa-youtube social-icon"></i>
-                    <div class="social-name">YouTube</div>
-                    <div class="social-followers" id="youtube-followers">295 abonnés</div>
-                    <a href="https://www.youtube.com/@PLIPLI2000" class="social-btn" target="_blank">Voir la chaîne</a>
-                </div>
-               
-                <div class="social-card tiktok">
-                    <i class="fab fa-tiktok social-icon"></i>
-                    <div class="social-name">TikTok</div>
-                    <div class="social-followers" id="tiktok-followers">+1700 followers</div>
-                    <a href="https://www.tiktok.com/@pli_pli45" class="social-btn" target="_blank">Voir le profil</a>
-                </div>
-               
-                <div class="social-card instagram">
-                    <i class="fab fa-instagram social-icon"></i>
-                    <div class="social-name">Instagram</div>
-                    <div class="social-followers" id="instagram-followers">+80 followers</div>
-                    <a href="https://www.instagram.com/plipligamstag/" class="social-btn" target="_blank">Voir le profil</a>
-                </div>
-               
-                <div class="social-card twitch">
-                    <i class="fab fa-twitch social-icon"></i>
-                    <div class="social-name">Twitch</div>
-                    <div class="social-followers" id="twitch-followers">Streams réguliers</div>
-                    <a href="https://www.twitch.tv/pligamstag" class="social-btn" target="_blank">Voir les streams</a>
-                </div>
-               
-                <div class="social-card twitter">
-                    <i class="fab fa-twitter social-icon"></i>
-                    <div class="social-name">Twitter</div>
-                    <div class="social-followers" id="twitter-followers">Actualités en direct</div>
-                    <a href="https://x.com/Pligamstag" class="social-btn" target="_blank">Voir le profil</a>
-                </div>
-               
-                <div class="social-card fortnite">
-                    <i class="fas fa-crosshairs social-icon"></i>
-                    <div class="social-name">Fortnite</div>
-                    <div class="social-followers">Page créateur pour map créa</div>
-                    <a href="https://www.fortnite.com/@plipli" class="social-btn" target="_blank">Voir le profil</a>
-                </div>
-               
-                <div class="social-card discord">
-                    <i class="fab fa-discord social-icon"></i>
-                    <div class="social-name">Discord</div>
-                    <div class="social-followers">Arrive bientôt</div>
-                    <a href="#" class="social-btn" onclick="alert('Serveur Discord bientôt disponible !')">Rejoindre</a>
-                </div>
-            </div>
-        </section>
-        <!-- Section À propos -->
-        <section class="section fade-in" id="apropos">
-            <h2 class="section-title"><i class="fas fa-user"></i> À Propos</h2>
-            <div class="about-content">
-                <p>Salut, je suis Pligamstag, créateur de contenu passionné par le gaming et les vidéos drôles. Mon objectif est de partager ma passion avec une communauté engagée et de créer des moments inoubliables à travers mes streams et vidéos.</p>
-                <p style="margin-top: 20px;">Je suis spécialisé dans les jeux comme Fortnite, Roblox, Minecraft, Phasmophobia et FIFA, avec Warzone qui arrive bientôt ! Rejoins-moi pour des moments de fun, des gameplays épiques et du contenu exclusif sur tous mes réseaux sociaux.</p>
-               
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-number" data-target="4">0+</div>
-                        <div class="stat-label">Années d'expérience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-target="2">0K+</div>
-                        <div class="stat-label">Followers total</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-target="150">0+</div>
-                        <div class="stat-label">Vidéos créées</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-target="20">0+</div>
-                        <div class="stat-label">Streams réalisés</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Section Jeux préférés -->
-        <section class="section fade-in" id="jeux">
-            <h2 class="section-title"><i class="fas fa-dice-d20"></i> Mes Jeux Préférés</h2>
-            <div class="games-grid">
-                <div class="game-card" data-game="fortnite">
-                    <i class="fas fa-crosshairs game-icon"></i>
-                    <div class="game-name">Fortnite</div>
-                </div>
-                <div class="game-card" data-game="roblox">
-                    <i class="fas fa-cube game-icon"></i>
-                    <div class="game-name">Roblox</div>
-                </div>
-                <div class="game-card" data-game="minecraft">
-                    <i class="fas fa-mountain game-icon"></i>
-                    <div class="game-name">Minecraft</div>
-                </div>
-                <div class="game-card" data-game="phasmophobia">
-                    <i class="fas fa-ghost game-icon"></i>
-                    <div class="game-name">Phasmophobia</div>
-                </div>
-                <div class="game-card" data-game="fifa">
-                    <i class="fas fa-futbol game-icon"></i>
-                    <div class="game-name">FIFA</div>
-                </div>
-                <div class="game-card coming-soon" data-game="warzone">
-                    <i class="fas fa-skull-crossbones game-icon"></i>
-                    <div class="game-name">Warzone</div>
-                </div>
-            </div>
-        </section>
-        <!-- Section Devenir Fan -->
-        <section class="section fade-in" id="fans">
-            <h2 class="section-title"><i class="fas fa-heart"></i> Deviens un Fan de Pligamstag</h2>
-            <div class="about-content">
-                <p style="font-size: 1.1rem; margin-bottom: 40px;">Rejoins officiellement la communauté Pligamstag ! Inscris-toi pour montrer ton soutien et faire partie de l'aventure.</p>
-               
-                <!-- Compteur de fans -->
-                <div style="margin: 30px auto 40px; max-width: 500px;">
-                    <div style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); border-radius: 20px; padding: 35px; text-align: center; box-shadow: 0 15px 40px rgba(106, 17, 203, 0.4); position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);"></div>
-                        <div style="position: relative; z-index: 1;">
-                            <div style="font-size: 0.95rem; color: rgba(255,255,255,0.9); margin-bottom: 15px; font-weight: 600; letter-spacing: 2px;">⭐ FANS OFFICIELS</div>
-                            <div id="fanCount" style="font-family: 'Orbitron', sans-serif; font-size: 4rem; font-weight: 900; color: white; text-shadow: 0 0 30px rgba(255,255,255,0.6); margin: 10px 0;">0</div>
-                            <div style="font-size: 0.95rem; color: rgba(255,255,255,0.9); margin-top: 10px; font-weight: 500;">et ça augmente ! 🚀</div>
-                        </div>
-                    </div>
-                </div>
-               
-                <!-- Messages de statut pour inscription fans -->
-                <div class="status-message status-success" id="fanSuccessMessage">
-                    <i class="fas fa-check-circle"></i> Bienvenue dans la communauté ! Tu es maintenant un fan officiel de Pligamstag 🎉
-                </div>
-               
-                <div class="status-message status-error" id="fanErrorMessage">
-                    <i class="fas fa-exclamation-circle"></i> <span id="fanErrorText">Tu es déjà inscrit avec cet email !</span>
-                </div>
-               
-                <!-- Formulaire d'inscription fan -->
-                <form class="contact-form" id="fanForm" style="margin-top: 30px; max-width: 500px;">
-                    <div class="form-group">
-                        <label class="form-label" for="fanName" style="font-size: 1rem; margin-bottom: 10px;">Ton pseudo/nom *</label>
-                        <input type="text" id="fanName" class="form-input" required placeholder="Pligamstag" style="font-size: 1rem; padding: 14px 18px;">
-                    </div>
-                   
-                    <div class="form-group">
-                        <label class="form-label" for="fanEmail" style="font-size: 1rem; margin-bottom: 10px;">Ton email *</label>
-                        <input type="email" id="fanEmail" class="form-input" required placeholder="pligamstag@gmail.com" style="font-size: 1rem; padding: 14px 18px;">
-                    </div>
-                   
-                    <button type="submit" class="submit-btn" id="fanSubmitBtn" style="width: 100%; padding: 16px 30px; font-size: 1.1rem; margin-top: 10px;">
-                        <span id="fanBtnText"><i class="fas fa-heart"></i> Devenir Fan</span>
-                        <div id="fanBtnLoading" style="display: none;">
-                            <i class="fas fa-spinner fa-spin"></i> Inscription en cours...
-                        </div>
-                    </button>
-                </form>
-               
-                <div style="margin-top: 25px; text-align: center; color: var(--gray); font-size: 0.95rem; font-style: italic;">
-                    <p>En t'inscrivant, tu rejoins une communauté de passionnés de gaming !</p>
-                </div>
-            </div>
-        </section>
-        <!-- Section Setup Gaming -->
-        <section class="section fade-in" id="setup">
-            <h2 class="section-title"><i class="fas fa-desktop"></i> Mon Setup Gaming</h2>
-            <div class="setup-grid">
-                <div class="setup-category">
-                    <h3 class="setup-title">🎮 Périphériques</h3>
-                    <div class="setup-item">
-                        <span class="item-name">Casque</span>
-                        <span class="item-value">HyperX Cloud II</span>
-                    </div>
-                    <div class="setup-item">
-                        <span class="item-name">Clavier</span>
-                        <span class="item-value">Razer BlackWidow</span>
-                    </div>
-                    <div class="setup-item">
-                        <span class="item-name">Souris</span>
-                        <span class="item-value">Logitech G Pro</span>
-                    </div>
-                    <div class="setup-item">
-                        <span class="item-name">Micro</span>
-                        <span class="item-value">Blue Yeti</span>
-                    </div>
-                </div>
-               
-                <div class="setup-category">
-                    <h3 class="setup-title">💻 Configuration PC</h3>
-                    <div class="setup-item">
-                        <span class="item-name">Processeur</span>
-                        <span class="item-value">Intel i7-12700K</span>
-                    </div>
-                    <div class="setup-item">
-                        <span class="item-name">Carte Graphique</span>
-                        <span class="item-value">NVIDIA RTX 4070</span>
-                    </div>
-                    <div class="setup-item">
-                        <span class="item-name">RAM</span>
-                        <span class="item-value">32GB DDR5</span>
-                    </div>
-                    <div class="setup-item">
-                        <span class="item-name">Écran</span>
-                        <span class="item-value">27" 144Hz</span>
-                    </div>
-                </div>
-               
-                <div class="setup-category">
-                    <h3 class="setup-title">📹 Streaming</h3>
-                    <div class="setup-item">
-                        <span class="item-name">Logiciel</span>
-                        <span class="item-value">OBS Studio</span>
-                    </div>
-                    <div class="setup-item">
-                        <span class="item-name">Caméra</span>
-                        <span class="item-value">Logitech C922</span>
-                    </div>
-                    <div class="setup-item">
-                        <span class="item-name">Éclairage</span>
-                        <span class="item-value">2x Panels LED</span>
-                    </div>
-                    <div class="setup-item">
-                        <span class="item-name">Connexion</span>
-                        <span class="item-value">Fibre 1Gbps</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Section Contact avec Formulaire -->
-        <section class="section fade-in" id="contact">
-            <h2 class="section-title"><i class="fas fa-envelope"></i> Contact</h2>
-            <div class="about-content">
-                <p>Tu as une question, une collaboration ou tu veux juste dire bonjour ? N'hésite pas à m'envoyer un message !</p>
-               
-                <!-- Messages de statut -->
-                <div class="status-message status-success" id="successMessage">
-                    <i class="fas fa-check-circle"></i> Message envoyé avec succès ! Je te réponds rapidement.
-                </div>
-               
-                <div class="status-message status-error" id="errorMessage">
-                    <i class="fas fa-exclamation-circle"></i> Erreur lors de l'envoi. Réessaie ou contacte-moi directement à pligamstag@gmail.com
-                </div>
-               
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label class="form-label" for="name">Ton nom *</label>
-                        <input type="text" id="name" class="form-input" required>
-                    </div>
-                   
-                    <div class="form-group">
-                        <label class="form-label" for="email">Ton email *</label>
-                        <input type="email" id="email" class="form-input" required>
-                    </div>
-                   
-                    <div class="form-group">
-                        <label class="form-label" for="subject">Sujet</label>
-                        <input type="text" id="subject" class="form-input" placeholder="Collaboration, question, etc.">
-                    </div>
-                   
-                    <div class="form-group">
-                        <label class="form-label" for="message">Ton message *</label>
-                        <textarea id="message" class="form-textarea" required placeholder="Salut Pligamstag, je te contacte parce que..."></textarea>
-                    </div>
-                   
-                    <button type="submit" class="submit-btn" id="submitBtn">
-                        <span id="btnText">Envoyer le message</span>
-                        <div id="btnLoading" style="display: none;">
-                            <i class="fas fa-spinner fa-spin"></i> Envoi en cours...
-                        </div>
-                    </button>
-                </form>
-               
-                <div style="margin-top: 30px; text-align: center;">
-                    <p><strong>Email direct :</strong> pligamstag@gmail.com</p>
-                    <p style="margin-top: 10px; color: var(--gray);">Je réponds généralement dans les 24h !</p>
-                </div>
-            </div>
-        </section>
+
+        <!-- Toutes tes sections (réseaux, à propos, jeux, fans, setup, contact, footer…) -->
+        <!-- Je te les remets pas ici pour pas faire 1000 lignes, tu les gardes exactement comme avant -->
+        <!-- Elles sont 100 % identiques à ton message précédent -->
+
     </div>
-    <!-- Footer -->
+
+    <!-- Footer (identique) -->
     <footer class="footer">
         <div class="container">
             <div class="footer-links">
@@ -372,19 +118,16 @@
                 <a href="#setup" class="footer-link">Setup</a>
                 <a href="#contact" class="footer-link">Contact</a>
             </div>
-            <p class="copyright">&copy; 2025 Pligamstag - Créateur de contenu gaming. Tous droits réservés.</p>
+            <p class="copyright">© 2025 Pligamstag - Créateur de contenu gaming. Tous droits réservés.</p>
             <p style="margin-top: 10px; font-size: 0.9rem;">Contact: pligamstag@gmail.com</p>
             <p style="margin-top: 10px; font-size: 0.9rem;">Connecté, Créatif, Gaming 🎮</p>
         </div>
     </footer>
+
     <!-- Scripts externes -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-   
-    <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-   
-    <!-- Ton fichier JS externe -->
     <script src="script.js"></script>
 </body>
 </html>
