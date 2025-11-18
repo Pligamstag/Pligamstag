@@ -8,11 +8,13 @@ const firebaseConfig = {
     appId: "1:32917915670:web:9e8b2a3893c5d54af50d37",
     measurementId: "G-26FD046N3C"
 };
+
 // Initialiser Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 console.log('🔥 Firebase initialisé !');
+
 // Initialisation des particules
 particlesJS('particles-js', {
     particles: {
@@ -47,11 +49,14 @@ particlesJS('particles-js', {
         }
     }
 });
+
 // Système LIVE Twitch
 let isLive = false;
+
 function updateLiveStatus() {
     const liveIndicator = document.getElementById('liveIndicator');
     const twitchStatus = document.getElementById('twitch-followers');
+    
     if (isLive) {
         liveIndicator.style.display = 'block';
         twitchStatus.textContent = '🔴 EN DIRECT MAINTENANT';
@@ -64,6 +69,7 @@ function updateLiveStatus() {
         twitchStatus.style.fontWeight = '';
     }
 }
+
 // Système email
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
@@ -72,6 +78,7 @@ function initContactForm() {
     const btnLoading = document.getElementById('btnLoading');
     const successMessage = document.getElementById('successMessage');
     const errorMessage = document.getElementById('errorMessage');
+    
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
        
@@ -81,12 +88,14 @@ function initContactForm() {
        
         successMessage.style.display = 'none';
         errorMessage.style.display = 'none';
+        
         const formData = {
             name: document.getElementById('name').value,
             email: document.getElementById('email').value,
             subject: document.getElementById('subject').value || 'Message depuis le site',
             message: document.getElementById('message').value
         };
+        
         setTimeout(() => {
             const mailtoLink = `mailto:pligamstag@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
                 `Nom: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
@@ -102,30 +111,36 @@ function initContactForm() {
         }, 1000);
     });
 }
+
 // Système du panneau latéral
 function initStatsSidebar() {
     const openBioBtn = document.getElementById('openBioBtn');
     const statsSidebar = document.getElementById('statsSidebar');
     const statsOverlay = document.getElementById('statsOverlay');
     const closeStatsSidebar = document.getElementById('closeStatsSidebar');
+    
     openBioBtn.addEventListener('click', function() {
         statsSidebar.classList.add('active');
         statsOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
     });
+    
     function closeStatsPanel() {
         statsSidebar.classList.remove('active');
         statsOverlay.classList.remove('active');
         document.body.style.overflow = 'auto';
     }
+    
     closeStatsSidebar.addEventListener('click', closeStatsPanel);
     statsOverlay.addEventListener('click', closeStatsPanel);
+    
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && statsSidebar.classList.contains('active')) {
             closeStatsPanel();
         }
     });
 }
+
 // Système d'inscription fans avec Firebase
 async function initFanSystem() {
     const fanForm = document.getElementById('fanForm');
@@ -136,10 +151,12 @@ async function initFanSystem() {
     const fanErrorMessage = document.getElementById('fanErrorMessage');
     const fanErrorText = document.getElementById('fanErrorText');
     const fanCountDisplay = document.getElementById('fanCount');
+    
     console.log('🎮 Système de fans initialisé avec Firebase');
    
     // Charger le compteur au démarrage
     await loadFanCount();
+    
     fanForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         console.log('📝 Formulaire soumis');
@@ -150,11 +167,14 @@ async function initFanSystem() {
        
         fanSuccessMessage.style.display = 'none';
         fanErrorMessage.style.display = 'none';
+        
         const fanData = {
             name: document.getElementById('fanName').value.trim(),
             email: document.getElementById('fanEmail').value.trim().toLowerCase()
         };
+        
         console.log('👤 Données:', fanData);
+        
         try {
             // Vérifier si l'email existe déjà
             const fanDoc = await db.collection('fans').doc(fanData.email).get();
@@ -203,6 +223,7 @@ async function initFanSystem() {
         fanBtnLoading.style.display = 'none';
         fanSubmitBtn.disabled = false;
     });
+    
     async function loadFanCount() {
         try {
             console.log('📊 Chargement du compteur...');
@@ -215,6 +236,7 @@ async function initFanSystem() {
             animateFanCount(0);
         }
     }
+    
     async function incrementFanCount() {
         try {
             console.log('➕ Rechargement du compteur...');
@@ -226,11 +248,13 @@ async function initFanSystem() {
             console.error('❌ Erreur incrémentation:', error);
         }
     }
+    
     function animateFanCount(target) {
         const duration = 2000;
         const start = parseInt(fanCountDisplay.textContent.replace(/\s/g, '')) || 0;
         const increment = (target - start) / (duration / 16);
         let current = start;
+        
         const animate = () => {
             current += increment;
             if ((increment > 0 && current < target) || (increment < 0 && current > target)) {
@@ -240,6 +264,7 @@ async function initFanSystem() {
                 fanCountDisplay.textContent = target.toLocaleString('fr-FR');
             }
         };
+        
         if (start !== target) {
             animate();
         } else {
@@ -247,6 +272,7 @@ async function initFanSystem() {
         }
     }
 }
+
 // Initialisation
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Site Pligamstag initialisé');
@@ -255,10 +281,13 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactForm();
     initStatsSidebar();
     initFanSystem();
+    
     setInterval(updateLiveStatus, 60000);
 });
+
 // Animations
 const fadeElements = document.querySelectorAll('.fade-in');
+
 const fadeInOnScroll = () => {
     fadeElements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
@@ -268,8 +297,10 @@ const fadeInOnScroll = () => {
         }
     });
 };
+
 window.addEventListener('scroll', fadeInOnScroll);
 fadeInOnScroll();
+
 // Navigation fluide
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -280,6 +311,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
 // Header scroll effect
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
@@ -289,14 +321,17 @@ window.addEventListener('scroll', () => {
         navbar.style.background = 'rgba(10, 10, 25, 0.9)';
     }
 });
+
 // Animated counters
 function animateCounters() {
     const counters = document.querySelectorAll('.stat-number');
     const speed = 200;
+    
     counters.forEach(counter => {
         const target = parseInt(counter.getAttribute('data-target'));
         let count = 0;
         const increment = target / speed;
+        
         const updateCounter = () => {
             if (count < target) {
                 count += increment;
@@ -306,9 +341,11 @@ function animateCounters() {
                 counter.innerText = target + (counter.innerText.includes('K') ? 'K+' : '+');
             }
         };
+        
         updateCounter();
     });
 }
+
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -317,4 +354,5 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, { threshold: 0.5 });
+
 observer.observe(document.querySelector('.stats'));
