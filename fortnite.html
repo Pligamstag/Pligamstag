@@ -1,820 +1,157 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pligamstag - Mon Univers Fortnite</title>
-    <meta name="description" content="Découvre l'univers Fortnite de Pligamstag : code créateur PliPli, maps créatives, statistiques et contenu exclusif !">
-   
-    <!-- Police Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
-   
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   
-    <style>
-        :root {
-            --fortnite-primary: #00D4FF;
-            --fortnite-secondary: #0080ff;
-            --fortnite-accent: #7B2FFF;
-            --dark: #0a0a1f;
-            --darker: #050510;
-            --light: #f0f0ff;
-            --gray: #8a8aa3;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Exo 2', sans-serif;
-            background: linear-gradient(135deg, #001a2e 0%, #000d1a 50%, #001a33 100%);
-            color: var(--light);
-            overflow-x: hidden;
-            position: relative;
-            line-height: 1.6;
-        }
-        
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            top: 0;
-            left: 0;
-        }
-        
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 26, 46, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 15px 0;
-            border-bottom: 2px solid var(--fortnite-primary);
-            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .nav-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--fortnite-primary), var(--fortnite-accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-        
-        .nav-link {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-link:hover {
-            color: var(--fortnite-primary);
-        }
-        
-        .back-btn {
-            background: linear-gradient(45deg, var(--fortnite-primary), var(--fortnite-secondary));
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
-        }
-        
-        .back-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 120px 0 60px;
-            text-align: center;
-            background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
-        }
-        
-        .hero-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--fortnite-primary), white, var(--fortnite-accent));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 3s ease infinite;
-            margin-bottom: 20px;
-            text-shadow: 0 0 50px rgba(0, 212, 255, 0.5);
-        }
-        
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--fortnite-primary);
-            margin-bottom: 40px;
-        }
-        
-        /* Code Créateur Section */
-        .creator-code-section {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(123, 47, 255, 0.1));
-            border: 3px solid var(--fortnite-primary);
-            border-radius: 20px;
-            padding: 50px;
-            text-align: center;
-            margin: 40px 0;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
-        }
-        
-        .creator-code-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .creator-code-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .creator-code-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            color: var(--fortnite-primary);
-            margin-bottom: 30px;
-        }
-        
-        .code-display {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4rem;
-            font-weight: 900;
-            color: white;
-            background: rgba(0, 212, 255, 0.2);
-            padding: 30px 60px;
-            border-radius: 15px;
-            display: inline-block;
-            border: 3px solid var(--fortnite-primary);
-            text-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
-            margin-bottom: 20px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        .code-instruction {
-            font-size: 1.2rem;
-            color: var(--light);
-            margin-top: 20px;
-        }
-        
-        /* Grid Section */
-        .section {
-            margin: 60px 0;
-        }
-        
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 40px;
-            color: var(--fortnite-primary);
-            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
-        }
-        
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .card {
-            background: rgba(0, 26, 46, 0.8);
-            border: 2px solid rgba(0, 212, 255, 0.3);
-            border-radius: 15px;
-            padding: 30px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--fortnite-primary), var(--fortnite-accent));
-        }
-        
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
-            border-color: var(--fortnite-primary);
-        }
-        
-        .card-icon {
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .card-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            color: var(--fortnite-primary);
-            text-align: center;
-            margin-bottom: 15px;
-        }
-        
-        .card-content {
-            text-align: center;
-            line-height: 1.8;
-            color: var(--light);
-        }
-        
-        .stat-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-        }
-        
-        .stat-row:last-child {
-            border-bottom: none;
-        }
-        
-        .stat-label {
-            color: var(--gray);
-        }
-        
-        .stat-value {
-            color: var(--fortnite-primary);
-            font-weight: 600;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(45deg, var(--fortnite-primary), var(--fortnite-secondary));
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin-top: 20px;
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
-        }
-        
-        .btn i {
-            margin-right: 8px;
-        }
-        
-        /* Social Links */
-        .social-links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 15px 25px;
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 10px;
-            color: var(--light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            background: rgba(0, 212, 255, 0.2);
-            border-color: var(--fortnite-primary);
-            transform: translateX(5px);
-        }
-        
-        .social-link i {
-            font-size: 1.5rem;
-        }
-        
-        /* Gallery Section */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-        
-        .gallery-item {
-            background: rgba(0, 26, 46, 0.6);
-            border: 2px solid rgba(0, 212, 255, 0.3);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .gallery-item:hover {
-            transform: scale(1.05);
-            border-color: var(--fortnite-primary);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
-        }
-        
-        .gallery-icon {
-            font-size: 3rem;
-            color: var(--fortnite-primary);
-            margin-bottom: 15px;
-        }
-        
-        .gallery-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            color: var(--light);
-            margin-bottom: 10px;
-        }
-        
-        .gallery-desc {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-        
-        /* Quote Section */
-        .quote-section {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(123, 47, 255, 0.05));
-            border-left: 4px solid var(--fortnite-primary);
-            border-radius: 10px;
-            padding: 40px;
-            margin: 60px 0;
-            position: relative;
-        }
-        
-        .quote-icon {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            font-size: 3rem;
-            color: var(--fortnite-primary);
-            opacity: 0.3;
-        }
-        
-        .quote-text {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            color: var(--light);
-            margin-left: 60px;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-        
-        .quote-author {
-            text-align: right;
-            color: var(--fortnite-primary);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-        
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 50px 0 30px;
-            margin-top: 80px;
-            border-top: 2px solid rgba(0, 212, 255, 0.3);
-            background: rgba(0, 26, 46, 0.5);
-        }
-        
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .footer p {
-            color: var(--gray);
-            margin: 10px 0;
-        }
-        
-        .footer-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            background: linear-gradient(45deg, var(--fortnite-primary), var(--fortnite-accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .code-display {
-                font-size: 2.5rem;
-                padding: 20px 40px;
-            }
-            
-            .creator-code-section {
-                padding: 30px 20px;
-            }
-            
-            .nav-links {
-                gap: 15px;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .code-display {
-                font-size: 2rem;
-                padding: 15px 30px;
-            }
-            
-            .card {
-                padding: 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PliPli - Créateur Fortnite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="fortnite-page.css">
 </head>
+
 <body>
-    <!-- Canvas pour les particules -->
-    <div id="particles-js"></div>
-    
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">🎮 FORTNITE</a>
-            <div class="nav-links">
-                <a href="index.html" class="nav-link back-btn">
-                    <i class="fas fa-arrow-left"></i> Retour au site
-                </a>
-            </div>
-        </div>
-    </nav>
-    
-    <div class="container">
-        <!-- Hero Section -->
-        <section class="hero">
-            <h1 class="hero-title">MON UNIVERS FORTNITE</h1>
-            <p class="hero-subtitle">Passionné depuis le Chapitre 1 • Maps créatives • Compétitif</p>
-        </section>
-        
-        <!-- Code Créateur -->
-        <section class="creator-code-section">
-            <div class="creator-code-content">
-                <div class="creator-code-title">
-                    🎯 MON CODE CRÉATEUR OFFICIEL
-                </div>
-                <div class="code-display">PliPli</div>
-                <p class="code-instruction">
-                    📱 Utilise ce code dans la boutique Fortnite pour me soutenir !<br>
-                    Chaque utilisation m'aide à continuer à créer du contenu pour vous 💙
-                </p>
-            </div>
-        </section>
-        
-        <!-- Statistiques -->
-        <section class="section">
-            <h2 class="section-title"><i class="fas fa-trophy"></i> Mes Statistiques</h2>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-icon">🏆</div>
-                    <h3 class="card-title">Expérience</h3>
-                    <div class="card-content">
-                        <div class="stat-row">
-                            <span class="stat-label">Début</span>
-                            <span class="stat-value">Chapitre 2</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Saisons jouées</span>
-                            <span class="stat-value">Toutes</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Années d'expérience</span>
-                            <span class="stat-value">6+ ans</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-icon">🎮</div>
-                    <h3 class="card-title">Style de Jeu</h3>
-                    <div class="card-content">
-                        <div class="stat-row">
-                            <span class="stat-label">Mode préféré</span>
-                            <span class="stat-value">Battle Royale</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Spécialité</span>
-                            <span class="stat-value">Build</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Plateforme</span>
-                            <span class="stat-value">Xbov</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-icon">🎨</div>
-                    <h3 class="card-title">Création</h3>
-                    <div class="card-content">
-                        <div class="stat-row">
-                            <span class="stat-label">Maps créatives</span>
-                            <span class="stat-value">En cours</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Type de maps</span>
-                            <span class="stat-value">Divers</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Statut</span>
-                            <span class="stat-value">Créateur</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Maps Créatives -->
-        <section class="section">
-            <h2 class="section-title"><i class="fas fa-map"></i> Mes Maps Créatives</h2>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-icon">🗺️</div>
-                    <h3 class="card-title">Page Créateur</h3>
-                    <p class="card-content">
-                        Découvre toutes mes créations et maps sur ma page créateur officielle Fortnite. Nouveaux projets régulièrement !
-                    </p>
-                    <a href="https://www.fortnite.com/@plipli" class="btn" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> Voir mes maps
-                    </a>
-                </div>
-                
-                <div class="card">
-                    <div class="card-icon">⚡</div>
-                    <h3 class="card-title">En Développement</h3>
-                    <p class="card-content">
-                        Plusieurs maps sont actuellement en cours de création dont une déja disponible. Reste connecté sur mes réseaux pour être le premier informé !
-                    </p>
-                </div>
-                
-                <div class="card">
-                    <div class="card-icon">🎯</div>
-                    <h3 class="card-title">Projets Futurs</h3>
-                    <p class="card-content">
-                        Des maps de RP et modes de jeu originaux arrivent bientôt. Rejoins la communauté pour donner tes idées !
-                    </p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Contenu Fortnite -->
-        <section class="section">
-            <h2 class="section-title"><i class="fas fa-video"></i> Mon Contenu Fortnite</h2>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-icon">📹</div>
-                    <h3 class="card-title">Où me suivre</h3>
-                    <p class="card-content">
-                        Retrouve mes gameplays, moments épiques, et lives Fortnite sur toutes mes plateformes !
-                    </p>
-                    <div class="social-links">
-                        <a href="https://www.youtube.com/@PLIPLI2000" class="social-link" target="_blank">
-                            <i class="fab fa-youtube"></i>
-                            <span>YouTube - Vidéos drole et bientot des défis</span>
-                        </a>
-                        <a href="https://www.tiktok.com/@pli_pli45" class="social-link" target="_blank">
-                            <i class="fab fa-tiktok"></i>
-                            <span>TikTok - Clips courts</span>
-                        </a>
-                        <a href="https://www.twitch.tv/pligamstag" class="social-link" target="_blank">
-                            <i class="fab fa-twitch"></i>
-                            <span>Twitch - Lives en direct</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-icon">🎬</div>
-                    <h3 class="card-title">Type de Contenu</h3>
-                    <div class="card-content">
-                        <div class="stat-row">
-                            <span class="stat-label">Gameplays</span>
-                            <span class="stat-value">✓</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Challenges</span>
-                            <span class="stat-value">✓</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">Maps créatives</span>
-                            <span class="stat-value">✓</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-icon">📅</div>
-                    <h3 class="card-title">Programme</h3>
-                    <p class="card-content">
-                        Des vidéos régulières sur YouTube et TikTok, avec des lives Twitch une fois par semaine. Abonne-toi pour ne rien rater !
-                    </p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Ce que j'aime dans Fortnite -->
-        <section class="section">
-            <h2 class="section-title"><i class="fas fa-heart"></i> Ce que j'aime dans Fortnite</h2>
-            <div class="gallery">
-                <div class="gallery-item">
-                    <div class="gallery-icon">🏗️</div>
-                    <div class="gallery-title">Le Build</div>
-                    <p class="gallery-desc">La mécanique unique qui rend Fortnite spécial</p>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-icon">🎨</div>
-                    <div class="gallery-icon">Mode Créatif</div>
-                    <p class="gallery-desc">Créer mes propres maps et modes</p>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-icon">👥</div>
-                    <div class="gallery-title">La Communauté</div>
-                    <p class="gallery-desc">Jouer avec vous tous !</p>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-icon">🎭</div>
-                    <div class="gallery-title">Les Skins</div>
-                    <p class="gallery-desc">Collections et cosmétiques épiques</p>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-icon">🔄</div>
-                    <div class="gallery-title">Les Updates</div>
-                    <p class="gallery-desc">Toujours du contenu frais</p>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-icon">⚔️</div>
-                    <div class="gallery-title">Le Compétitif</div>
-                    <p class="gallery-desc">Se dépasser et progresser</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Citation -->
-        <section class="quote-section">
-            <i class="fas fa-quote-left quote-icon"></i>
-            <p class="quote-text">
-                "Fortnite, c'est plus qu'un jeu pour moi. C'est une passion, une communauté, et un terrain de jeu créatif sans limites. Chaque partie est une nouvelle aventure, chaque saison apporte son lot de surprises, et c'est ça qui me motive à continuer chaque jour !"
-            </p>
-            <div class="quote-author">- Pligamstag</div>
-        </section>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-bg"></div>
+    <div class="particles" id="particles"></div>
+    <div class="hero-content">
+      <div class="profile-avatar">
+        <div class="profile-avatar-inner">🎮</div>
+      </div>
+      <h1 class="creator-name">PliPli</h1>
+      <div class="creator-code-badge">
+        <i class="fas fa-tag"></i>
+        <span>Code créateur : <span class="code-text">PLIPLI</span></span>
+      </div>
+      <p class="hero-description">
+        Créateur Fortnite passionné depuis le Chapitre 1 • Maps créatives originales • Contenu régulier
+      </p>
+      <a href="https://www.fortnite.com/@plipli?lang=en-US" target="_blank" class="epic-link">
+        <i class="fas fa-external-link-alt"></i> Voir sur Fortnite.com
+      </a>
     </div>
-    
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">PLIGAMSTAG & FORTNITE tout un univers</div>
-            <p>Code Créateur : <strong style="color: var(--fortnite-primary);">PliPli</strong></p>
-            <p style="margin-top: 20px;">&copy; 2025 Pligamstag - Tous droits réservés</p>
-            <p>Contact: pligamstag@gmail.com</p>
+  </section>
+
+  <!-- Navigation Tabs -->
+  <nav class="nav-tabs">
+    <div class="tabs-container">
+      <button class="tab-btn active" data-tab="islands">
+        <i class="fas fa-map"></i> Mes Îles
+      </button>
+      <button class="tab-btn" data-tab="stats">
+        <i class="fas fa-chart-line"></i> Statistiques
+      </button>
+      <button class="tab-btn" data-tab="about">
+        <i class="fas fa-user"></i> À propos
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Islands Tab -->
+    <div id="islands" class="tab-content active">
+      <h2 style="font-size: 2rem; margin-bottom: 20px; color: #fff;">
+        <i class="fas fa-compass"></i> Mes Créations
+      </h2>
+      <div class="islands-grid">
+        <a href="https://www.fortnite.com/@plipli/7242-2875-7553?lang=en-US" target="_blank" class="island-card-link">
+          <div class="island-card">
+            <div class="island-thumbnail">🏝️</div>
+            <div class="island-info">
+              <h3 class="island-title">San Venera</h3>
+              <div class="island-meta">
+                <span><i class="fas fa-users"></i> Multijoueur</span>
+                <span><i class="fas fa-star"></i> Disponible</span>
+              </div>
+              <div class="island-code">CODE: 7242-2875-7553</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats Tab -->
+    <div id="stats" class="tab-content">
+      <h2 style="font-size: 2rem; margin-bottom: 30px; color: #fff;">
+        <i class="fas fa-trophy"></i> Mes Statistiques
+      </h2>
+      <div class="stats-overview">
+        <div class="stat-card">
+          <div class="stat-number">1+</div>
+          <div class="stat-label">Années d'expérience</div>
         </div>
-    </footer>
-    
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        // Particules
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 60, density: { enable: true, value_area: 800 } },
-                color: { value: "#00D4FF" },
-                shape: { type: "circle" },
-                opacity: { value: 0.4, random: true },
-                size: { value: 3, random: true },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#00D4FF",
-                    opacity: 0.3,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: { enable: true, mode: "repulse" },
-                    onclick: { enable: true, mode: "push" },
-                    resize: true
-                }
-            }
-        });
-        
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-        
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(0, 26, 46, 0.98)';
-                navbar.style.boxShadow = '0 4px 25px rgba(0, 212, 255, 0.4)';
-            } else {
-                navbar.style.background = 'rgba(0, 26, 46, 0.95)';
-                navbar.style.boxShadow = '0 4px 20px rgba(0, 212, 255, 0.3)';
-            }
-        });
-    </script>
+        <div class="stat-card">
+          <div class="stat-number">1</div>
+          <div class="stat-label">Map publiée</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Victoires Royales</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Passion</div>
+        </div>
+      </div>
+
+      <div class="about-container" style="margin-top: 30px;">
+        <h3 class="about-title">💎 Mon Style de Jeu</h3>
+        <div class="about-text">
+          <p><strong>🎮 Plateforme :</strong> Xbox</p>
+          <p><strong>🏗️ Spécialité :</strong> Build & Création</p>
+          <p><strong>🎯 Mode préféré :</strong> Battle Royale & Créatif</p>
+          <p><strong>🌟 Début :</strong> Chapitre 1</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Tab -->
+    <div id="about" class="tab-content">
+      <div class="about-container">
+        <h2 class="about-title">👋 Salut, moi c'est PliPli !</h2>
+        <div class="about-text">
+          <p>
+            Bienvenue sur ma page créateur ! Je suis un joueur passionné de Fortnite depuis le Chapitre 1.
+            J'adore créer des maps originales et partager mes aventures avec la communauté.
+          </p>
+          <p style="margin-top: 20px;">
+            Mon objectif est de créer des expériences uniques en mode créatif et de proposer du contenu
+            régulier sur mes différentes plateformes. Que ce soit du gameplay compétitif, des défis amusants
+            ou des tests de mes nouvelles maps, il y en a pour tous les goûts !
+          </p>
+          <p style="margin-top: 20px;">
+            N'oublie pas d'utiliser mon code créateur <strong style="color: #00D4FF;">PLIPLI</strong>
+            dans la boutique pour me soutenir ! 💙
+          </p>
+        </div>
+
+        <h3 style="color: #00D4FF; font-size: 1.5rem; margin: 40px 0 20px;">
+          🌐 Rejoins-moi sur :
+        </h3>
+        <div class="social-links">
+          <a href="https://www.youtube.com/@PLIPLI2000" target="_blank" class="social-btn">
+            <i class="fab fa-youtube"></i> YouTube
+          </a>
+          <a href="https://www.tiktok.com/@pli_pli45" target="_blank" class="social-btn">
+            <i class="fab fa-tiktok"></i> TikTok
+          </a>
+          <a href="https://www.twitch.tv/pligamstag" target="_blank" class="social-btn">
+            <i class="fab fa-twitch"></i> Twitch
+          </a>
+          <a href="https://www.fortnite.com/@plipli?lang=en-US" target="_blank" class="social-btn">
+            <i class="fas fa-gamepad"></i> Fortnite.com
+          </a>
+          <a href="index.html" class="social-btn">
+            <i class="fas fa-globe"></i> Site Principal
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="fortnite-page.js"></script>
 </body>
+
 </html>
