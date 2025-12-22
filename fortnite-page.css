@@ -14,8 +14,8 @@ body {
 /* Header Hero */
 .hero-section {
     position: relative;
-    height: 60vh;
-    min-height: 500px;
+    height: 65vh;
+    min-height: 550px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     overflow: hidden;
 }
@@ -107,15 +107,21 @@ body {
     opacity: 0.95;
     max-width: 600px;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-.epic-link {
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.epic-link, .home-link {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     padding: 12px 30px;
-    background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.4);
     border-radius: 50px;
@@ -123,13 +129,26 @@ body {
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
-    margin-top: 10px;
 }
 
-.epic-link:hover {
+.epic-link {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.home-link {
+    background: rgba(0, 212, 255, 0.25);
+    border-color: rgba(0, 212, 255, 0.5);
+}
+
+.epic-link:hover, .home-link:hover {
     background: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.home-link:hover {
+    background: rgba(0, 212, 255, 0.4);
+    border-color: #00D4FF;
 }
 
 /* Navigation Tabs */
@@ -276,6 +295,20 @@ body {
     color: #00D4FF;
     border: 1px solid rgba(0, 212, 255, 0.3);
     display: inline-block;
+    margin-bottom: 12px;
+}
+
+.island-cta {
+    color: #8892b0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.island-card:hover .island-cta {
+    color: #00D4FF;
 }
 
 /* Stats Section */
@@ -366,6 +399,17 @@ body {
     transform: translateY(-2px);
 }
 
+.social-btn-home {
+    background: rgba(123, 47, 255, 0.1);
+    border-color: rgba(123, 47, 255, 0.3);
+    color: #7B2FFF;
+}
+
+.social-btn-home:hover {
+    background: rgba(123, 47, 255, 0.2);
+    border-color: #7B2FFF;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .creator-name {
@@ -373,8 +417,8 @@ body {
     }
 
     .hero-section {
-        height: 50vh;
-        min-height: 400px;
+        height: 55vh;
+        min-height: 450px;
     }
 
     .islands-grid {
@@ -388,6 +432,17 @@ body {
     .tab-btn {
         padding: 15px 20px;
         font-size: 0.9rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .epic-link, .home-link {
+        width: 100%;
+        justify-content: center;
     }
 }
 
