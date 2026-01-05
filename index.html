@@ -8,24 +8,33 @@
     <meta name="apple-mobile-web-app-title" content="Pligamstag Site" />
     <link rel="manifest" href="/site.webmanifest" />
     
+    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-5TGPZL77');</script>
+    <!-- End Google Tag Manager -->
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pligamstag - Créateur de Contenu Gaming</title>
     <meta name="description" content="Pligamstag - Créateur de contenu passionné par Fortnite, Roblox, Minecraft, Phasmophobia, FIFA et bientôt Apex Legends. Retrouvez-moi sur TikTok, YouTube, Instagram, Twitch et plus !">
    
+    <!-- Police Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+   
+    <!-- Font Awesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+   
+    <!-- Ton fichier CSS externe -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TGPZL77"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <!-- BANNIÈRE ÉVÉNEMENT -->
     <div class="event-banner" id="eventBanner">
@@ -271,6 +280,7 @@
             <div class="about-content">
                 <p style="font-size: 1.1rem; margin-bottom: 40px;">Rejoins officiellement la communauté Pligamstag ! Inscris-toi pour montrer ton soutien et faire partie de l'aventure.</p>
                
+                <!-- Compteur de fans -->
                 <div style="margin: 30px auto 40px; max-width: 500px;">
                     <div style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); border-radius: 20px; padding: 35px; text-align: center; box-shadow: 0 15px 40px rgba(106, 17, 203, 0.4); position: relative; overflow: hidden;">
                         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);"></div>
@@ -282,6 +292,7 @@
                     </div>
                 </div>
                
+                <!-- Messages de statut pour inscription fans -->
                 <div class="status-message status-success" id="fanSuccessMessage">
                     <i class="fas fa-check-circle"></i> Bienvenue dans la communauté ! Tu es maintenant un fan officiel de Pligamstag 🎉
                 </div>
@@ -290,6 +301,7 @@
                     <i class="fas fa-exclamation-circle"></i> <span id="fanErrorText">Tu es déjà inscrit avec cet email !</span>
                 </div>
                
+                <!-- Formulaire d'inscription fan -->
                 <form class="contact-form" id="fanForm" style="margin-top: 30px; max-width: 500px;">
                     <div class="form-group">
                         <label class="form-label" for="fanName" style="font-size: 1rem; margin-bottom: 10px;">Ton pseudo/nom *</label>
@@ -315,12 +327,13 @@
             </div>
         </section>
 
-        <!-- Section Contact -->
+        <!-- Section Contact avec Formulaire -->
         <section class="section fade-in" id="contact">
             <h2 class="section-title"><i class="fas fa-envelope"></i> Contact</h2>
             <div class="about-content">
                 <p>Tu as une question, une collaboration ou tu veux juste dire bonjour ? N'hésite pas à m'envoyer un message !</p>
                
+                <!-- Messages de statut -->
                 <div class="status-message status-success" id="successMessage">
                     <i class="fas fa-check-circle"></i> Message envoyé avec succès ! Je te réponds rapidement.
                 </div>
@@ -384,10 +397,14 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Scripts externes -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+   
+    <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+   
+    <!-- Ton fichier JS externe -->
     <script src="script.js"></script>
 </body>
 </html>
