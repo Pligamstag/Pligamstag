@@ -9,11 +9,8 @@ const firebaseConfig = {
     measurementId: "G-26FD046N3C"
 };
 
-// Initialiser Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-
-console.log('🔥 Firebase initialisé !');
 
 // Initialisation des particules
 particlesJS('particles-js', {
@@ -50,7 +47,70 @@ particlesJS('particles-js', {
     }
 });
 
-// Système LIVE Twitch
+// ========== SYSTÈME ÉVÉNEMENT ==========
+const targetDate = new Date('2026-01-10T00:00:00').getTime();
+
+const eventBanner = document.getElementById('eventBanner');
+const mickeyMini = document.getElementById('mickeyMini');
+const closeBtn = document.getElementById('closeBtn');
+const eventBtn = document.getElementById('eventBtn');
+const navbar = document.getElementById('navbar');
+const liveIndicator = document.getElementById('liveIndicator');
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+    
+    if (distance < 0) {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        
+        eventBtn.disabled = false;
+        eventBtn.innerHTML = '<i class="fas fa-rocket"></i> Accéder à l\'événement';
+        eventBtn.onclick = function() {
+            alert('🎉 Bienvenue à l\'événement spécial Pligamstag ! 🎮');
+        };
+        
+        return;
+    }
+    
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    document.getElementById('days').textContent = String(days).padStart(2, '0');
+    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+closeBtn.addEventListener('click', function() {
+    eventBanner.classList.add('hidden');
+    mickeyMini.classList.add('visible');
+    navbar.classList.add('banner-hidden');
+    if (liveIndicator) {
+        liveIndicator.classList.add('banner-hidden');
+    }
+    document.body.style.paddingTop = '70px';
+});
+
+mickeyMini.addEventListener('click', function() {
+    mickeyMini.classList.remove('visible');
+    eventBanner.classList.remove('hidden');
+    navbar.classList.remove('banner-hidden');
+    if (liveIndicator) {
+        liveIndicator.classList.remove('banner-hidden');
+    }
+    document.body.style.paddingTop = '140px';
+});
+
+// ========== SYSTÈME LIVE TWITCH ==========
 let isLive = false;
 
 function updateLiveStatus() {
@@ -70,7 +130,7 @@ function updateLiveStatus() {
     }
 }
 
-// Système email
+// ========== SYSTÈME EMAIL CONTACT ==========
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
@@ -112,7 +172,7 @@ function initContactForm() {
     });
 }
 
-// Système du panneau latéral
+// ========== SYSTÈME PANNEAU BIO ==========
 function initStatsSidebar() {
     const openBioBtn = document.getElementById('openBioBtn');
     const statsSidebar = document.getElementById('statsSidebar');
@@ -141,7 +201,7 @@ function initStatsSidebar() {
     });
 }
 
-// Système d'inscription fans avec Firebase
+// ========== SYSTÈME FANS FIREBASE ==========
 async function initFanSystem() {
     const fanForm = document.getElementById('fanForm');
     const fanSubmitBtn = document.getElementById('fanSubmitBtn');
@@ -152,14 +212,10 @@ async function initFanSystem() {
     const fanErrorText = document.getElementById('fanErrorText');
     const fanCountDisplay = document.getElementById('fanCount');
     
-    console.log('🎮 Système de fans initialisé avec Firebase');
-   
-    // Charger le compteur au démarrage
     await loadFanCount();
     
     fanForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-        console.log('📝 Formulaire soumis');
        
         fanBtnText.style.display = 'none';
         fanBtnLoading.style.display = 'block';
@@ -173,34 +229,24 @@ async function initFanSystem() {
             email: document.getElementById('fanEmail').value.trim().toLowerCase()
         };
         
-        console.log('👤 Données:', fanData);
-        
         try {
-            // Vérifier si l'email existe déjà
             const fanDoc = await db.collection('fans').doc(fanData.email).get();
            
             if (fanDoc.exists) {
-                console.log('⚠️ Email déjà inscrit');
                 fanErrorText.textContent = 'Tu es déjà inscrit avec cet email ! Merci pour ton soutien 💜';
                 fanErrorMessage.style.display = 'block';
                 setTimeout(() => {
                     fanErrorMessage.style.display = 'none';
                 }, 5000);
             } else {
-                // Enregistrer le nouveau fan
-                console.log('💾 Enregistrement du fan...');
                 await db.collection('fans').doc(fanData.email).set({
                     name: fanData.name,
                     email: fanData.email,
                     date: firebase.firestore.FieldValue.serverTimestamp()
                 });
                
-                console.log('✅ Fan enregistré');
-               
-                // Incrémenter le compteur
                 await incrementFanCount();
                
-                // Afficher le succès
                 fanSuccessMessage.style.display = 'block';
                 fanForm.reset();
                
@@ -211,7 +257,6 @@ async function initFanSystem() {
                 }, 8000);
             }
         } catch (error) {
-            console.error('❌ Erreur:', error);
             fanErrorText.textContent = 'Une erreur est survenue: ' + error.message;
             fanErrorMessage.style.display = 'block';
             setTimeout(() => {
@@ -226,26 +271,21 @@ async function initFanSystem() {
     
     async function loadFanCount() {
         try {
-            console.log('📊 Chargement du compteur...');
             const snapshot = await db.collection('fans').get();
             const count = snapshot.size;
-            console.log('📊 Compteur actuel:', count);
             animateFanCount(count);
         } catch (error) {
-            console.log('📊 Erreur chargement:', error);
             animateFanCount(0);
         }
     }
     
     async function incrementFanCount() {
         try {
-            console.log('➕ Rechargement du compteur...');
             const snapshot = await db.collection('fans').get();
             const newCount = snapshot.size;
-            console.log('✅ Nouveau compteur:', newCount);
             animateFanCount(newCount);
         } catch (error) {
-            console.error('❌ Erreur incrémentation:', error);
+            console.error('Erreur incrémentation:', error);
         }
     }
     
@@ -273,10 +313,8 @@ async function initFanSystem() {
     }
 }
 
-// Initialisation
+// ========== INITIALISATION ==========
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Site Pligamstag initialisé');
-   
     updateLiveStatus();
     initContactForm();
     initStatsSidebar();
@@ -285,7 +323,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(updateLiveStatus, 60000);
 });
 
-// Animations
+// ========== ANIMATIONS SCROLL ==========
 const fadeElements = document.querySelectorAll('.fade-in');
 
 const fadeInOnScroll = () => {
