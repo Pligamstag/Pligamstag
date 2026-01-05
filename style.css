@@ -904,3 +904,363 @@ body {
     color: white;
     text-decoration: none;
     border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 45, 117, 0.3);
+    cursor: pointer;
+}
+
+.game-link-coming:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 45, 117, 0.5);
+}
+
+.game-card.coming-soon::after {
+    content: 'Bientôt';
+    position: absolute;
+    top: 10px;
+    right: -30px;
+    background: var(--accent);
+    color: white;
+    padding: 5px 30px;
+    transform: rotate(45deg);
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* FORMS */
+.contact-form {
+    max-width: 600px;
+    margin: 30px auto 0;
+    display: grid;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--light);
+}
+
+.form-input, .form-textarea {
+    padding: 12px 15px;
+    background: rgba(30, 30, 60, 0.8);
+    border: 1px solid rgba(106, 17, 203, 0.3);
+    border-radius: 8px;
+    color: var(--light);
+    font-family: 'Exo 2', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(255, 45, 117, 0.2);
+}
+
+.form-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.submit-btn {
+    padding: 12px 30px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.status-message {
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    text-align: center;
+    display: none;
+}
+
+.status-success {
+    background: rgba(46, 204, 113, 0.2);
+    border: 1px solid #2ecc71;
+    color: #2ecc71;
+}
+
+.status-error {
+    background: rgba(231, 76, 60, 0.2);
+    border: 1px solid #e74c3c;
+    color: #e74c3c;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 50px 0 30px;
+    color: var(--gray);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 50px;
+    background: rgba(10, 10, 25, 0.7);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.footer-link {
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--accent);
+}
+
+.copyright {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+/* ANIMATIONS */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .logo {
+        font-size: 3.5rem;
+    }
+   
+    .social-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 160px;
+    }
+
+    .navbar {
+        top: 90px;
+    }
+
+    .navbar.banner-hidden {
+        top: 0;
+    }
+
+    .event-banner {
+        padding: 10px 15px;
+    }
+
+    .event-title {
+        font-size: 1rem;
+    }
+
+    .countdown-item {
+        min-width: 50px;
+        padding: 4px 8px;
+    }
+
+    .countdown-number {
+        font-size: 1.2rem;
+    }
+
+    .countdown-label {
+        font-size: 0.6rem;
+    }
+
+    .event-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    .event-icon {
+        font-size: 1.5rem;
+    }
+
+    .mickey-mini {
+        width: 85px;
+        height: 85px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .ear-left, .ear-right {
+        width: 32px;
+        height: 32px;
+    }
+
+    .main-head {
+        width: 50px;
+        height: 50px;
+    }
+
+    .event-icon-mini {
+        font-size: 1.5rem;
+    }
+
+    .mickey-structure::before {
+        width: 100px;
+        height: 100px;
+    }
+
+    .logo {
+        font-size: 2.8rem;
+    }
+   
+    .section {
+        padding: 30px 20px;
+        margin: 30px 0;
+    }
+   
+    .section-title {
+        font-size: 1.8rem;
+    }
+   
+    .social-grid {
+        grid-template-columns: 1fr;
+    }
+   
+    .stats {
+        flex-direction: column;
+        align-items: center;
+    }
+   
+    .stat-item {
+        margin-bottom: 20px;
+    }
+   
+    .nav-menu {
+        display: none;
+    }
+   
+    .bio-menu-btn {
+        display: block;
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+
+    .live-indicator {
+        top: 170px;
+        right: 10px;
+        font-size: 0.7rem;
+        padding: 6px 12px;
+    }
+
+    .live-indicator.banner-hidden {
+        top: 70px;
+    }
+
+    .game-card {
+        min-height: 120px;
+        padding: 15px;
+    }
+
+    .stats-sidebar {
+        width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 180px;
+    }
+
+    .navbar {
+        top: 110px;
+    }
+
+    .logo {
+        font-size: 2.2rem;
+    }
+   
+    .tagline {
+        font-size: 1.1rem;
+    }
+   
+    .container {
+        padding: 0 15px;
+    }
+   
+    .header {
+        padding: 100px 0 40px;
+    }
+
+    .section {
+        padding: 20px 15px;
+    }
+
+    .game-card {
+        min-height: 100px;
+        padding: 12px;
+    }
+
+    .game-icon {
+        font-size: 2rem;
+    }
+
+    .game-name {
+        font-size: 1rem;
+    }
+
+    .stats-sidebar {
+        width: 280px;
+    }
+
+    .mickey-mini {
+        width: 75px;
+        height: 75px;
+    }
+
+    .ear-left, .ear-right {
+        width: 28px;
+        height: 28px;
+    }
+
+    .main-head {
+        width: 45px;
+        height: 45px;
+    }
+
+    .event-icon-mini {
+        font-size: 1.3rem;
+    }
+
+    .mickey-structure::before {
+        width: 90px;
+        height: 90px;
+    }
+}
