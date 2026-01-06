@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Règlement Disney Champions League</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(135deg, #1a1a3e 0%, #0f0f23 50%, #1a0a2e 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            animation: shimmer 8s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .parchment {
+            background: linear-gradient(135deg, #f4e8d0 0%, #e8d7b8 50%, #d9c3a0 100%);
+            padding: 60px 50px;
+            border-radius: 8px;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                inset 0 0 100px rgba(139, 90, 43, 0.1);
+            position: relative;
+            animation: unfurl 1s ease-out;
+            border: 2px solid #c4a876;
+        }
+        
+        @keyframes unfurl {
+            from {
+                transform: scaleY(0.1);
+                opacity: 0;
+            }
+            to {
+                transform: scaleY(1);
+                opacity: 1;
+            }
+        }
+        
+        .parchment::before,
+        .parchment::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(to right, transparent, #8b5a2b 50%, transparent);
+            opacity: 0.3;
+        }
+        
+        .parchment::before {
+            top: 0;
+        }
+        
+        .parchment::after {
+            bottom: 0;
+        }
+        
+        .burn-edge {
+            position: absolute;
+            background: radial-gradient(ellipse at center, rgba(101, 67, 33, 0.4) 0%, transparent 70%);
+        }
+        
+        .burn-top {
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            height: 20px;
+        }
+        
+        .burn-bottom {
+            bottom: -10px;
+            left: -10px;
+            right: -10px;
+            height: 20px;
+        }
+        
+        .burn-left {
+            left: -10px;
+            top: -10px;
+            bottom: -10px;
+            width: 20px;
+        }
+        
+        .burn-right {
+            right: -10px;
+            top: -10px;
+            bottom: -10px;
+            width: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 3px double #c9a961;
+            padding-bottom: 30px;
+        }
+        
+        .trophy {
+            font-size: 48px;
+            margin-bottom: 15px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 42px;
+            color: #3d2817;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 22px;
+            color: #8b5a2b;
+            font-style: italic;
+            margin-top: 15px;
+        }
+        
+        .ornament {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #c9a961, transparent);
+            margin: 20px auto;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.4s; }
+        .section:nth-child(4) { animation-delay: 0.6s; }
+        .section:nth-child(5) { animation-delay: 0.8s; }
+        .section:nth-child(6) { animation-delay: 1s; }
+        
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 28px;
+            color: #3d2817;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h2::before {
+            content: '◆';
+            color: #c9a961;
+            font-size: 20px;
+        }
+        
+        p, li {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #4a3728;
+            margin-bottom: 15px;
+        }
+        
+        ul {
+            list-style: none;
+            padding-left: 30px;
+        }
+        
+        li {
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #c9a961;
+            font-size: 24px;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            background: linear-gradient(to right, transparent, rgba(201, 169, 97, 0.2), transparent);
+            padding: 15px 20px;
+            border-left: 3px solid #c9a961;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 3px double #c9a961;
+            font-family: 'Cinzel', serif;
+            font-size: 22px;
+            color: #8b5a2b;
+            font-style: italic;
+            animation: fadeIn 1.5s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .seal {
+            width: 80px;
+            height: 80px;
+            margin: 20px auto 0;
+            border: 3px solid #c9a961;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            background: radial-gradient(circle, #f4e8d0, #d9c3a0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .countdown-section {
+            margin-top: 50px;
+            padding-top: 40px;
+            text-align: center;
+            animation: fadeIn 2s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .countdown-section h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 26px;
+            color: #3d2817;
+            margin-bottom: 30px;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .time-block {
+            background: linear-gradient(135deg, #c9a961 0%, #b8975a 100%);
+            padding: 20px 25px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            border: 2px solid #3d2817;
+            min-width: 90px;
+        }
+        
+        .time-value {
+            font-family: 'Cinzel', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #3d2817;
+            line-height: 1;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+        }
+        
+        .time-label {
+            font-family: 'Crimson Text', serif;
+            font-size: 14px;
+            color: #3d2817;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .time-separator {
+            font-family: 'Cinzel', serif;
+            font-size: 36px;
+            color: #8b5a2b;
+            font-weight: 700;
+        }
+        
+        .match-button {
+            font-family: 'Cinzel', serif;
+            font-size: 22px;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, #8b7355 0%, #6b5844 100%);
+            color: #d9c3a0;
+            border: 3px solid #3d2817;
+            border-radius: 12px;
+            cursor: not-allowed;
+            transition: all 0.4s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            opacity: 0.5;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .match-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .match-button:disabled {
+            filter: grayscale(50%);
+        }
+        
+        .match-button.active {
+            background: linear-gradient(135deg, #c9a961 0%, #b8975a 100%);
+            color: #3d2817;
+            cursor: pointer;
+            opacity: 1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .match-button.active:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.6);
+        }
+        
+        .match-button.active:hover::before {
+            left: 100%;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 0 0 rgba(201, 169, 97, 0.7);
+            }
+            50% {
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(201, 169, 97, 0);
+            }
+        }
+        
+        .button-icon {
+            font-size: 24px;
+        }
+        
+        .button-hint {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #8b5a2b;
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .parchment {
+                padding: 40px 30px;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            .subtitle {
+                font-size: 18px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+            
+            p, li {
+                font-size: 16px;
+            }
+            
+            .countdown {
+                gap: 10px;
+            }
+            
+            .time-block {
+                padding: 15px 20px;
+                min-width: 70px;
+            }
+            
+            .time-value {
+                font-size: 32px;
+            }
+            
+            .time-separator {
+                font-size: 28px;
+            }
+            
+            .match-button {
+                font-size: 18px;
+                padding: 15px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <div class="parchment">
+            <div class="burn-edge burn-top"></div>
+            <div class="burn-edge burn-bottom"></div>
+            <div class="burn-edge burn-left"></div>
+            <div class="burn-edge burn-right"></div>
+            
+            <div class="header">
+                <div class="trophy">🏆</div>
+                <h1>Règlement Officiel</h1>
+                <h1>Disney Champions League</h1>
+                <div class="ornament"></div>
+                <p class="subtitle">La Ligue des Légendes Disney</p>
+            </div>
+            
+            <div class="section">
+                <h2>I – Le Principe du Tournoi</h2>
+                <p>Inspiré des plus grandes compétitions sportives, la Disney Champions League rassemble les films les plus emblématiques de l'univers Disney dans un tournoi épique et sans précédent. À travers les votes du public, les légendes s'affronteront pour déterminer quelle œuvre mérite de s'élever au rang de Champion Ultime. Le destin de chaque film repose entre vos mains.</p>
+            </div>
+            
+            <div class="section">
+                <h2>II – La Phase de Poules</h2>
+                <p>Le tournoi s'ouvre sur une phase de poules rigoureuse et équitable :</p>
+                <ul>
+                    <li><strong>8 poules</strong> nommées de A à H sont constituées</li>
+                    <li>Chaque poule regroupe <strong>4 films légendaires</strong></li>
+                    <li>Tous les films d'une même poule s'affrontent mutuellement</li>
+                    <li><strong>Système de points appliqué :</strong></li>
+                </ul>
+                <div class="highlight">
+                    <strong>Victoire :</strong> 3 points<br>
+                    <strong>Égalité :</strong> 1 point<br>
+                    <strong>Défaite :</strong> 0 point
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>III – Les Votes du Public</h2>
+                <p>Le pouvoir de décision appartient entièrement au public. Chaque confrontation est tranchée par un vote démocratique et transparent :</p>
+                <ul>
+                    <li>Les résultats sont déterminés <strong>exclusivement par les votes en ligne</strong></li>
+                    <li><strong>Un vote équivaut à une voix</strong>, sans distinction</li>
+                    <li>Les périodes de vote sont clairement définies et annoncées</li>
+                    <li>Aucune différenciation selon la plateforme utilisée</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>IV – Qualification & Phase Finale</h2>
+                <p>À l'issue de la phase de poules, seuls les meilleurs poursuivront leur quête de gloire :</p>
+                <ul>
+                    <li>Les <strong>films les mieux classés</strong> de chaque poule se qualifient pour la suite du tournoi</li>
+                    <li>Les qualifiés accèdent aux <strong>Quarts de Finale</strong></li>
+                    <li>Les vainqueurs progressent vers les <strong>Demi-Finales</strong></li>
+                    <li>Enfin, deux légendes s'affronteront lors de la <strong>Grande Finale</strong></li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>V – Esprit & Équité</h2>
+                <p>La Disney Champions League repose sur des valeurs fondamentales qui garantissent l'intégrité du tournoi :</p>
+                <ul>
+                    <li><strong>Respect absolu</strong> de tous les univers et époques Disney</li>
+                    <li><strong>Transparence totale</strong> dans la publication des résultats</li>
+                    <li>Tournoi <strong>communautaire</strong>, organisé par les fans pour les fans</li>
+                    <li>Aucune affiliation officielle avec The Walt Disney Company</li>
+                </ul>
+            </div>
+            
+            <div class="footer">
+                « Que la légende s'écrive…<br>et que le public décide. »
+                <div class="seal">✨</div>
+            </div>
+            
+            <div class="countdown-section">
+                <div class="ornament"></div>
+                <h3>⏳ Le tournoi commence dans :</h3>
+                <div class="countdown" id="countdown">
+                    <div class="time-block">
+                        <div class="time-value" id="days">00</div>
+                        <div class="time-label">Jours</div>
+                    </div>
+                    <div class="time-separator">:</div>
+                    <div class="time-block">
+                        <div class="time-value" id="hours">00</div>
+                        <div class="time-label">Heures</div>
+                    </div>
+                    <div class="time-separator">:</div>
+                    <div class="time-block">
+                        <div class="time-value" id="minutes">00</div>
+                        <div class="time-label">Minutes</div>
+                    </div>
+                    <div class="time-separator">:</div>
+                    <div class="time-block">
+                        <div class="time-value" id="seconds">00</div>
+                        <div class="time-label">Secondes</div>
+                    </div>
+                </div>
+                <button class="match-button" id="matchButton" disabled>
+                    <span class="button-icon">⚔️</span>
+                    Voir les Matchs
+                    <span class="button-icon">⚔️</span>
+                </button>
+                <p class="button-hint" id="buttonHint">Le tournoi n'a pas encore commencé</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Génération des étoiles
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+        
+        // Effet de texture papier subtil au scroll
+        let scrollPos = 0;
+        window.addEventListener('scroll', () => {
+            scrollPos = window.scrollY;
+            document.querySelector('.parchment').style.transform = `translateY(${scrollPos * 0.02}px)`;
+        });
+        
+        // Compte à rebours
+        const targetDate = new Date('2026-01-15T00:00:00').getTime();
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                
+                const button = document.getElementById('matchButton');
+                const hint = document.getElementById('buttonHint');
+                button.disabled = false;
+                button.classList.add('active');
+                hint.textContent = 'Le tournoi est lancé ! Cliquez pour participer';
+                hint.style.color = '#2d7a2d';
+                
+                clearInterval(countdownInterval);
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+        
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Gestion du bouton
+        document.getElementById('matchButton').addEventListener('click', function() {
+            if (!this.disabled) {
+                alert('Redirection vers les matchs...');
+                // window.location.href = '/matchs';
+            }
+        });
+    </script>
+</body>
+</html>
