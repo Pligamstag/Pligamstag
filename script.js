@@ -47,69 +47,6 @@ particlesJS('particles-js', {
     }
 });
 
-// ========== SYSTÈME ÉVÉNEMENT ==========
-const targetDate = new Date('2026-01-10T00:00:00').getTime();
-
-const eventBanner = document.getElementById('eventBanner');
-const mickeyMini = document.getElementById('mickeyMini');
-const closeBtn = document.getElementById('closeBtn');
-const eventBtn = document.getElementById('eventBtn');
-const navbar = document.getElementById('navbar');
-const liveIndicator = document.getElementById('liveIndicator');
-
-function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
-    
-    if (distance < 0) {
-        document.getElementById('days').textContent = '00';
-        document.getElementById('hours').textContent = '00';
-        document.getElementById('minutes').textContent = '00';
-        document.getElementById('seconds').textContent = '00';
-        
-        eventBtn.disabled = false;
-        eventBtn.innerHTML = '<i class="fas fa-rocket"></i> Accéder à l\'événement';
-        eventBtn.onclick = function() {
-            alert('🎉 Bienvenue à l\'événement spécial Pligamstag ! 🎮');
-        };
-        
-        return;
-    }
-    
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-    document.getElementById('days').textContent = String(days).padStart(2, '0');
-    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-closeBtn.addEventListener('click', function() {
-    eventBanner.classList.add('hidden');
-    mickeyMini.classList.add('visible');
-    navbar.classList.add('banner-hidden');
-    if (liveIndicator) {
-        liveIndicator.classList.add('banner-hidden');
-    }
-    document.body.style.paddingTop = '70px';
-});
-
-mickeyMini.addEventListener('click', function() {
-    mickeyMini.classList.remove('visible');
-    eventBanner.classList.remove('hidden');
-    navbar.classList.remove('banner-hidden');
-    if (liveIndicator) {
-        liveIndicator.classList.remove('banner-hidden');
-    }
-    document.body.style.paddingTop = '140px';
-});
-
 // ========== SYSTÈME LIVE TWITCH ==========
 let isLive = false;
 
