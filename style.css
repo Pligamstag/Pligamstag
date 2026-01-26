@@ -202,6 +202,32 @@ body {
     color: var(--accent);
 }
 
+.bio-content p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+
+.creator-code {
+    margin-top: 25px;
+    padding: 15px;
+    background: rgba(106, 17, 203, 0.1);
+    border-radius: 10px;
+    border-left: 3px solid var(--accent);
+}
+
+.creator-code p:first-child {
+    font-size: 0.9rem;
+    color: var(--light);
+    margin-bottom: 8px;
+}
+
+.code-text {
+    font-size: 1.2rem;
+    color: var(--accent);
+    font-weight: bold;
+}
+
 /* LIVE INDICATOR */
 .live-indicator {
     position: fixed;
@@ -373,6 +399,32 @@ body {
     transform: translateX(-50%);
 }
 
+/* SECTIONS DÉSACTIVÉES */
+.section.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    filter: grayscale(50%);
+    position: relative;
+}
+
+.section.disabled::after {
+    content: '🔒 SECTION TEMPORAIREMENT DÉSACTIVÉE';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px 40px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    z-index: 10;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
 /* SOCIAL CARDS */
 .social-grid {
     display: grid;
@@ -464,6 +516,10 @@ body {
     color: #e0e0e0;
     max-width: 800px;
     margin: 0 auto;
+}
+
+.about-secondary {
+    margin-top: 20px;
 }
 
 .stats {
@@ -628,6 +684,62 @@ body {
     font-weight: bold;
 }
 
+/* FANS SECTION */
+.fan-stats-container {
+    margin: 30px auto 40px;
+    max-width: 500px;
+}
+
+.fan-stats-box {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    border-radius: 20px;
+    padding: 35px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(106, 17, 203, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.fan-stats-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+}
+
+.fan-stats-title {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 15px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
+}
+
+.fan-count {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: white;
+    text-shadow: 0 0 30px rgba(255,255,255,0.6);
+    margin: 10px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.fan-stats-subtitle {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.9);
+    margin-top: 10px;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+}
+
 /* FORMS */
 .contact-form {
     max-width: 600px;
@@ -691,24 +803,15 @@ body {
     transform: none;
 }
 
-.status-message {
-    padding: 15px;
-    border-radius: 8px;
-    margin: 15px 0;
+/* CONTACT INFO */
+.contact-info {
+    margin-top: 30px;
     text-align: center;
-    display: none;
 }
 
-.status-success {
-    background: rgba(46, 204, 113, 0.2);
-    border: 1px solid #2ecc71;
-    color: #2ecc71;
-}
-
-.status-error {
-    background: rgba(231, 76, 60, 0.2);
-    border: 1px solid #e74c3c;
-    color: #e74c3c;
+.contact-response {
+    margin-top: 10px;
+    color: var(--gray);
 }
 
 /* FOOTER */
@@ -741,6 +844,16 @@ body {
 
 .copyright {
     margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.contact-email {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.footer-tagline {
+    margin-top: 10px;
     font-size: 0.9rem;
 }
 
@@ -819,6 +932,11 @@ body {
     .stats-sidebar {
         width: 300px;
     }
+
+    .section.disabled::after {
+        font-size: 0.9rem;
+        padding: 15px 25px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -857,5 +975,10 @@ body {
 
     .stats-sidebar {
         width: 280px;
+    }
+
+    .section.disabled::after {
+        font-size: 0.75rem;
+        padding: 12px 20px;
     }
 }
