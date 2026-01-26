@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pligamstag - Créateur de Contenu Gaming</title>
+    <meta name="description" content="Pligamstag - Créateur de contenu passionné par Fortnite, Roblox, Minecraft, Phasmophobia, FIFA et bientôt Apex Legends. Retrouvez-moi sur TikTok, YouTube, Instagram, Twitch et plus !">
+    
+    <!-- Favicons -->
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -8,21 +14,19 @@
     <meta name="apple-mobile-web-app-title" content="Pligamstag Site" />
     <link rel="manifest" href="/site.webmanifest" />
     
+    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-5TGPZL77');</script>
     
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pligamstag - Créateur de Contenu Gaming</title>
-    <meta name="description" content="Pligamstag - Créateur de contenu passionné par Fortnite, Roblox, Minecraft, Phasmophobia, FIFA et bientôt Apex Legends. Retrouvez-moi sur TikTok, YouTube, Instagram, Twitch et plus !">
-   
+    <!-- Fonts et icônes -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="stylesheet" href="/style.css">
+    <!-- Feuilles de style -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TGPZL77"
@@ -38,8 +42,6 @@
                 <li><a href="#apropos" class="nav-link">À Propos</a></li>
                 <li><a href="#jeux" class="nav-link">Jeux</a></li>
                 <li><a href="fortnite.html" class="nav-link">Fortnite</a></li>
-                <li><a href="#fans" class="nav-link">Fans</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <button class="bio-menu-btn" id="openBioBtn">
                 <i class="fas fa-book-open"></i> Ma Bio
@@ -57,17 +59,17 @@
             </button>
         </div>
        
-        <div style="padding: 15px; color: var(--light); line-height: 1.8; font-size: 0.95rem;">
-            <p style="margin-bottom: 15px;">
+        <div class="bio-content">
+            <p>
                 <strong>Pligamstag</strong> est un créateur passionné de gaming et d'esport, présent sur TikTok depuis avril 2021 et sur YouTube depuis février 2022.
             </p>
-            <p style="margin-bottom: 15px;">
+            <p>
                 Depuis ses débuts, il partage son univers avec une seule mission : transmettre sa passion du jeu, créer des moments fun et faire sourire tous ceux qui le regardent.
             </p>
-            <p style="margin-bottom: 15px;">
+            <p>
                 Streamer est son plus grand bonheur : c'est là qu'il donne le meilleur de lui-même, entre vibes chill, bonne humeur et esprit compétitif.
             </p>
-            <p style="margin-bottom: 15px;">
+            <p>
                 Son code créateur <strong>"PliPli"</strong>, un rêve d'enfance, est devenu réalité grâce à sa communauté — et peut-être qu'un jour, il pourra vraiment vous remercier comme il le souhaite.
             </p>
             <p>
@@ -75,9 +77,9 @@
             </p>
         </div>
        
-        <div style="margin-top: 25px; padding: 15px; background: rgba(106, 17, 203, 0.1); border-radius: 10px; border-left: 3px solid var(--accent);">
-            <p style="font-size: 0.9rem; color: var(--light); margin-bottom: 8px;">🎯 Code Créateur</p>
-            <p style="font-size: 1.2rem; color: var(--accent); font-weight: bold;">PliPli</p>
+        <div class="creator-code">
+            <p>🎯 Code Créateur</p>
+            <p class="code-text">PliPli</p>
         </div>
     </div>
 
@@ -141,7 +143,7 @@
                     <i class="fab fa-discord social-icon"></i>
                     <div class="social-name">Discord</div>
                     <div class="social-followers">Arrive bientôt</div>
-                    <a href="#" class="social-btn" onclick="alert('Serveur Discord bientôt disponible !')">Rejoindre</a>
+                    <a href="#" class="social-btn" onclick="alert('Serveur Discord bientôt disponible !'); return false;">Rejoindre</a>
                 </div>
             </div>
         </section>
@@ -151,7 +153,7 @@
             <h2 class="section-title"><i class="fas fa-user"></i> À Propos</h2>
             <div class="about-content">
                 <p>Salut, je suis Pligamstag, créateur de contenu passionné par le gaming et les vidéos drôles. Mon objectif est de partager ma passion avec une communauté engagée et de créer des moments inoubliables à travers mes streams et vidéos.</p>
-                <p style="margin-top: 20px;">Je suis spécialisé dans les jeux comme Fortnite, Roblox, Minecraft, Phasmophobia et FIFA, avec Apex Legends qui arrive bientôt ! Rejoins-moi pour des moments de fun, des gameplays épiques et du contenu exclusif sur tous mes réseaux sociaux.</p>
+                <p class="about-secondary">Je suis spécialisé dans les jeux comme Fortnite, Roblox, Minecraft, Phasmophobia et FIFA, avec Apex Legends qui arrive bientôt ! Rejoins-moi pour des moments de fun, des gameplays épiques et du contenu exclusif sur tous mes réseaux sociaux.</p>
                
                 <div class="stats">
                     <div class="stat-item">
@@ -212,102 +214,73 @@
             </div>
         </section>
 
-        <!-- Section Devenir Fan -->
-        <section class="section fade-in" id="fans">
+        <!-- Section Devenir Fan - DÉSACTIVÉE -->
+        <section class="section fade-in disabled" id="fans">
             <h2 class="section-title"><i class="fas fa-heart"></i> Deviens un Fan de Pligamstag</h2>
             <div class="about-content">
-                <p style="font-size: 1.1rem; margin-bottom: 40px;">Rejoins officiellement la communauté Pligamstag ! Inscris-toi pour montrer ton soutien et faire partie de l'aventure.</p>
+                <p class="about-secondary">Rejoins officiellement la communauté Pligamstag ! Inscris-toi pour montrer ton soutien et faire partie de l'aventure.</p>
                
-                <div style="margin: 30px auto 40px; max-width: 500px;">
-                    <div style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); border-radius: 20px; padding: 35px; text-align: center; box-shadow: 0 15px 40px rgba(106, 17, 203, 0.4); position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);"></div>
-                        <div style="position: relative; z-index: 1;">
-                            <div style="font-size: 0.95rem; color: rgba(255,255,255,0.9); margin-bottom: 15px; font-weight: 600; letter-spacing: 2px;">⭐ FANS OFFICIELS</div>
-                            <div id="fanCount" style="font-family: 'Orbitron', sans-serif; font-size: 4rem; font-weight: 900; color: white; text-shadow: 0 0 30px rgba(255,255,255,0.6); margin: 10px 0;">0</div>
-                            <div style="font-size: 0.95rem; color: rgba(255,255,255,0.9); margin-top: 10px; font-weight: 500;">et ça augmente ! 🚀</div>
-                        </div>
+                <div class="fan-stats-container">
+                    <div class="fan-stats-box">
+                        <div class="fan-stats-title">⭐ FANS OFFICIELS</div>
+                        <div id="fanCount" class="fan-count">0</div>
+                        <div class="fan-stats-subtitle">et ça augmente ! 🚀</div>
                     </div>
                 </div>
                
-                <div class="status-message status-success" id="fanSuccessMessage">
-                    <i class="fas fa-check-circle"></i> Bienvenue dans la communauté ! Tu es maintenant un fan officiel de Pligamstag 🎉
-                </div>
-               
-                <div class="status-message status-error" id="fanErrorMessage">
-                    <i class="fas fa-exclamation-circle"></i> <span id="fanErrorText">Tu es déjà inscrit avec cet email !</span>
-                </div>
-               
-                <form class="contact-form" id="fanForm" style="margin-top: 30px; max-width: 500px;">
+                <form class="contact-form" id="fanForm">
                     <div class="form-group">
-                        <label class="form-label" for="fanName" style="font-size: 1rem; margin-bottom: 10px;">Ton pseudo/nom *</label>
-                        <input type="text" id="fanName" class="form-input" required placeholder="Pligamstag" style="font-size: 1rem; padding: 14px 18px;">
+                        <label class="form-label" for="fanName">Ton pseudo/nom *</label>
+                        <input type="text" id="fanName" class="form-input" disabled>
                     </div>
                    
                     <div class="form-group">
-                        <label class="form-label" for="fanEmail" style="font-size: 1rem; margin-bottom: 10px;">Ton email *</label>
-                        <input type="email" id="fanEmail" class="form-input" required placeholder="pligamstag@gmail.com" style="font-size: 1rem; padding: 14px 18px;">
+                        <label class="form-label" for="fanEmail">Ton email *</label>
+                        <input type="email" id="fanEmail" class="form-input" disabled>
                     </div>
                    
-                    <button type="submit" class="submit-btn" id="fanSubmitBtn" style="width: 100%; padding: 16px 30px; font-size: 1.1rem; margin-top: 10px;">
-                        <span id="fanBtnText"><i class="fas fa-heart"></i> Devenir Fan</span>
-                        <div id="fanBtnLoading" style="display: none;">
-                            <i class="fas fa-spinner fa-spin"></i> Inscription en cours...
-                        </div>
+                    <button type="submit" class="submit-btn" disabled>
+                        <i class="fas fa-heart"></i> Devenir Fan
                     </button>
                 </form>
-               
-                <div style="margin-top: 25px; text-align: center; color: var(--gray); font-size: 0.95rem; font-style: italic;">
-                    <p>En t'inscrivant, tu rejoins une communauté de passionnés de gaming !</p>
-                </div>
             </div>
         </section>
 
-        <!-- Section Contact -->
-        <section class="section fade-in" id="contact">
+        <!-- Section Contact - DÉSACTIVÉE -->
+        <section class="section fade-in disabled" id="contact">
             <h2 class="section-title"><i class="fas fa-envelope"></i> Contact</h2>
             <div class="about-content">
                 <p>Tu as une question, une collaboration ou tu veux juste dire bonjour ? N'hésite pas à m'envoyer un message !</p>
                
-                <div class="status-message status-success" id="successMessage">
-                    <i class="fas fa-check-circle"></i> Message envoyé avec succès ! Je te réponds rapidement.
-                </div>
-               
-                <div class="status-message status-error" id="errorMessage">
-                    <i class="fas fa-exclamation-circle"></i> Erreur lors de l'envoi. Réessaie ou contacte-moi directement à pligamstag@gmail.com
-                </div>
-               
                 <form class="contact-form" id="contactForm">
                     <div class="form-group">
                         <label class="form-label" for="name">Ton nom *</label>
-                        <input type="text" id="name" class="form-input" required>
+                        <input type="text" id="name" class="form-input" disabled>
                     </div>
                    
                     <div class="form-group">
                         <label class="form-label" for="email">Ton email *</label>
-                        <input type="email" id="email" class="form-input" required>
+                        <input type="email" id="email" class="form-input" disabled>
                     </div>
                    
                     <div class="form-group">
                         <label class="form-label" for="subject">Sujet</label>
-                        <input type="text" id="subject" class="form-input" placeholder="Collaboration, question, etc.">
+                        <input type="text" id="subject" class="form-input" disabled>
                     </div>
                    
                     <div class="form-group">
                         <label class="form-label" for="message">Ton message *</label>
-                        <textarea id="message" class="form-textarea" required placeholder="Salut Pligamstag, je te contacte parce que..."></textarea>
+                        <textarea id="message" class="form-textarea" disabled></textarea>
                     </div>
                    
-                    <button type="submit" class="submit-btn" id="submitBtn">
-                        <span id="btnText">Envoyer le message</span>
-                        <div id="btnLoading" style="display: none;">
-                            <i class="fas fa-spinner fa-spin"></i> Envoi en cours...
-                        </div>
+                    <button type="submit" class="submit-btn" disabled>
+                        Envoyer le message
                     </button>
                 </form>
                
-                <div style="margin-top: 30px; text-align: center;">
+                <div class="contact-info">
                     <p><strong>Email direct :</strong> pligamstag@gmail.com</p>
-                    <p style="margin-top: 10px; color: var(--gray);">Je réponds généralement dans les 24h !</p>
+                    <p class="contact-response">Je réponds généralement dans les 24h !</p>
                 </div>
             </div>
         </section>
@@ -322,20 +295,15 @@
                 <a href="#apropos" class="footer-link">À Propos</a>
                 <a href="#jeux" class="footer-link">Jeux</a>
                 <a href="fortnite.html" class="footer-link">Fortnite</a>
-                <a href="#fans" class="footer-link">Fans</a>
-                <a href="#contact" class="footer-link">Contact</a>
             </div>
             <p class="copyright">&copy; 2025 Pligamstag - Créateur de contenu gaming. Tous droits réservés.</p>
-            <p style="margin-top: 10px; font-size: 0.9rem;">Contact: pligamstag@gmail.com</p>
-            <p style="margin-top: 10px; font-size: 0.9rem;">Connecté, Créatif, Gaming 🎮</p>
+            <p class="contact-email">Contact: pligamstag@gmail.com</p>
+            <p class="footer-tagline">Connecté, Créatif, Gaming 🎮</p>
         </div>
     </footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-    
     <script src="script.js"></script>
 </body>
 </html>
