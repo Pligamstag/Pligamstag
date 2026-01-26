@@ -1,17 +1,3 @@
-// Configuration Firebase
-const firebaseConfig = {
-    apiKey: "AIzaSyAIrQqokEPwD2YNaqaVM2IMMNJ-32P-zy8",
-    authDomain: "pligamstag-e8832.firebaseapp.com",
-    projectId: "pligamstag-e8832",
-    storageBucket: "pligamstag-e8832.firebasestorage.app",
-    messagingSenderId: "32917915670",
-    appId: "1:32917915670:web:9e8b2a3893c5d54af50d37",
-    measurementId: "G-26FD046N3C"
-};
-
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-
 // Initialisation des particules
 particlesJS('particles-js', {
     particles: {
@@ -47,69 +33,7 @@ particlesJS('particles-js', {
     }
 });
 
-// ========== SYSTÈME LIVE TWITCH ==========
-let isLive = false;
-
-function updateLiveStatus() {
-    const liveIndicator = document.getElementById('liveIndicator');
-    const twitchStatus = document.getElementById('twitch-followers');
-    
-    if (isLive) {
-        liveIndicator.style.display = 'block';
-        twitchStatus.textContent = '🔴 EN DIRECT MAINTENANT';
-        twitchStatus.style.color = '#ff2d75';
-        twitchStatus.style.fontWeight = 'bold';
-    } else {
-        liveIndicator.style.display = 'none';
-        twitchStatus.textContent = 'Streams réguliers';
-        twitchStatus.style.color = '';
-        twitchStatus.style.fontWeight = '';
-    }
-}
-
-// ========== SYSTÈME EMAIL CONTACT ==========
-function initContactForm() {
-    const contactForm = document.getElementById('contactForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const btnText = document.getElementById('btnText');
-    const btnLoading = document.getElementById('btnLoading');
-    const successMessage = document.getElementById('successMessage');
-    const errorMessage = document.getElementById('errorMessage');
-    
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-       
-        btnText.style.display = 'none';
-        btnLoading.style.display = 'block';
-        submitBtn.disabled = true;
-       
-        successMessage.style.display = 'none';
-        errorMessage.style.display = 'none';
-        
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            subject: document.getElementById('subject').value || 'Message depuis le site',
-            message: document.getElementById('message').value
-        };
-        
-        setTimeout(() => {
-            const mailtoLink = `mailto:pligamstag@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-                `Nom: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-            )}`;
-           
-            window.location.href = mailtoLink;
-            successMessage.style.display = 'block';
-            contactForm.reset();
-           
-            btnText.style.display = 'block';
-            btnLoading.style.display = 'none';
-            submitBtn.disabled = false;
-        }, 1000);
-    });
-}
-
-// ========== SYSTÈME PANNEAU BIO ==========
+// Système panneau bio
 function initStatsSidebar() {
     const openBioBtn = document.getElementById('openBioBtn');
     const statsSidebar = document.getElementById('statsSidebar');
@@ -138,129 +62,7 @@ function initStatsSidebar() {
     });
 }
 
-// ========== SYSTÈME FANS FIREBASE ==========
-async function initFanSystem() {
-    const fanForm = document.getElementById('fanForm');
-    const fanSubmitBtn = document.getElementById('fanSubmitBtn');
-    const fanBtnText = document.getElementById('fanBtnText');
-    const fanBtnLoading = document.getElementById('fanBtnLoading');
-    const fanSuccessMessage = document.getElementById('fanSuccessMessage');
-    const fanErrorMessage = document.getElementById('fanErrorMessage');
-    const fanErrorText = document.getElementById('fanErrorText');
-    const fanCountDisplay = document.getElementById('fanCount');
-    
-    await loadFanCount();
-    
-    fanForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-       
-        fanBtnText.style.display = 'none';
-        fanBtnLoading.style.display = 'block';
-        fanSubmitBtn.disabled = true;
-       
-        fanSuccessMessage.style.display = 'none';
-        fanErrorMessage.style.display = 'none';
-        
-        const fanData = {
-            name: document.getElementById('fanName').value.trim(),
-            email: document.getElementById('fanEmail').value.trim().toLowerCase()
-        };
-        
-        try {
-            const fanDoc = await db.collection('fans').doc(fanData.email).get();
-           
-            if (fanDoc.exists) {
-                fanErrorText.textContent = 'Tu es déjà inscrit avec cet email ! Merci pour ton soutien 💜';
-                fanErrorMessage.style.display = 'block';
-                setTimeout(() => {
-                    fanErrorMessage.style.display = 'none';
-                }, 5000);
-            } else {
-                await db.collection('fans').doc(fanData.email).set({
-                    name: fanData.name,
-                    email: fanData.email,
-                    date: firebase.firestore.FieldValue.serverTimestamp()
-                });
-               
-                await incrementFanCount();
-               
-                fanSuccessMessage.style.display = 'block';
-                fanForm.reset();
-               
-                fanSuccessMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-               
-                setTimeout(() => {
-                    fanSuccessMessage.style.display = 'none';
-                }, 8000);
-            }
-        } catch (error) {
-            fanErrorText.textContent = 'Une erreur est survenue: ' + error.message;
-            fanErrorMessage.style.display = 'block';
-            setTimeout(() => {
-                fanErrorMessage.style.display = 'none';
-            }, 5000);
-        }
-       
-        fanBtnText.style.display = 'block';
-        fanBtnLoading.style.display = 'none';
-        fanSubmitBtn.disabled = false;
-    });
-    
-    async function loadFanCount() {
-        try {
-            const snapshot = await db.collection('fans').get();
-            const count = snapshot.size;
-            animateFanCount(count);
-        } catch (error) {
-            animateFanCount(0);
-        }
-    }
-    
-    async function incrementFanCount() {
-        try {
-            const snapshot = await db.collection('fans').get();
-            const newCount = snapshot.size;
-            animateFanCount(newCount);
-        } catch (error) {
-            console.error('Erreur incrémentation:', error);
-        }
-    }
-    
-    function animateFanCount(target) {
-        const duration = 2000;
-        const start = parseInt(fanCountDisplay.textContent.replace(/\s/g, '')) || 0;
-        const increment = (target - start) / (duration / 16);
-        let current = start;
-        
-        const animate = () => {
-            current += increment;
-            if ((increment > 0 && current < target) || (increment < 0 && current > target)) {
-                fanCountDisplay.textContent = Math.floor(current).toLocaleString('fr-FR');
-                requestAnimationFrame(animate);
-            } else {
-                fanCountDisplay.textContent = target.toLocaleString('fr-FR');
-            }
-        };
-        
-        if (start !== target) {
-            animate();
-        } else {
-            fanCountDisplay.textContent = target.toLocaleString('fr-FR');
-        }
-    }
-}
-
-// ========== INITIALISATION ==========
-document.addEventListener('DOMContentLoaded', function() {
-    updateLiveStatus();
-    initContactForm();
-    initStatsSidebar();
-    initFanSystem();
-    
-    setInterval(updateLiveStatus, 60000);
-});
-
-// ========== ANIMATIONS SCROLL ==========
+// Animations scroll
 const fadeElements = document.querySelectorAll('.fade-in');
 
 const fadeInOnScroll = () => {
@@ -273,29 +75,30 @@ const fadeInOnScroll = () => {
     });
 };
 
-window.addEventListener('scroll', fadeInOnScroll);
-fadeInOnScroll();
-
 // Navigation fluide
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
     });
-});
+}
 
 // Header scroll effect
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(10, 10, 25, 0.95)';
-    } else {
-        navbar.style.background = 'rgba(10, 10, 25, 0.9)';
-    }
-});
+function initScrollEffect() {
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 100) {
+            navbar.style.background = 'rgba(10, 10, 25, 0.95)';
+        } else {
+            navbar.style.background = 'rgba(10, 10, 25, 0.9)';
+        }
+    });
+}
 
 // Animated counters
 function animateCounters() {
@@ -321,13 +124,56 @@ function animateCounters() {
     });
 }
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            animateCounters();
-            observer.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.5 });
+// Live indicator simulation
+function initLiveIndicator() {
+    // Simuler un statut "en direct" de temps en temps
+    // En production, vous pourriez utiliser l'API Twitch ici
+    const liveIndicator = document.getElementById('liveIndicator');
+    
+    // Simuler un stream en direct (20% de chance d'être "en direct")
+    if (Math.random() < 0.2) {
+        liveIndicator.style.display = 'block';
+        
+        // Simuler la fin du stream après 4 heures
+        setTimeout(() => {
+            liveIndicator.style.display = 'none';
+        }, 4 * 60 * 60 * 1000); // 4 heures
+    }
+}
 
-observer.observe(document.querySelector('.stats'));
+// Initialisation quand le DOM est chargé
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialiser tous les composants
+    initStatsSidebar();
+    initSmoothScroll();
+    initScrollEffect();
+    initLiveIndicator();
+    
+    // Observer pour les animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.querySelector('.stats')) {
+                    animateCounters();
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    observer.observe(document.querySelector('#apropos'));
+    
+    // Initialiser les animations au scroll
+    window.addEventListener('scroll', fadeInOnScroll);
+    fadeInOnScroll();
+    
+    // Gestion des cartes de jeux
+    document.querySelectorAll('.game-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const game = this.getAttribute('data-game');
+            if (game === 'fortnite') {
+                window.location.href = 'fortnite.html';
+            }
+        });
+    });
+});
