@@ -3,7 +3,7 @@
 // ============================================================
 const SOCIAL_STATS = {
     twitch:    { followers: null,  label: 'abonnés',  live: false },  // géré automatiquement via API
-    youtube:   { followers: 300,   label: 'abonnés'  },
+    youtube:   { followers: 300    ,   label: 'abonnés'  },
     tiktok:    { followers: 1700,  label: 'followers' },
     instagram: { followers: 80,    label: 'followers' },
 };
